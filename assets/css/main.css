@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark :root {
+  color-scheme: dark;
+}
+
+.bg-mesh {
+  background: radial-gradient(circle at 20% 20%, rgba(6, 182, 212, 0.18), transparent 26%),
+              radial-gradient(circle at 80% 10%, rgba(14, 165, 233, 0.16), transparent 22%),
+              radial-gradient(circle at 10% 80%, rgba(99, 102, 241, 0.12), transparent 24%),
+              radial-gradient(circle at 70% 70%, rgba(45, 212, 191, 0.12), transparent 22%),
+              #0b1224;
+}
+
+#ld-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.surface-glass {
+  @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-glow;
+}
+
+.dark .surface-glass {
+  @apply bg-dark-card/70 border-white/5;
+}
+
+.glass {
+  @apply bg-white/70 backdrop-blur-xl border border-white/30 shadow-glow;
+}
+
+.dark .glass {
+  @apply bg-dark-card/70 border-white/10;
+}
+
+.grid-overlay {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+.bg-graph {
+  background-image: url("data:image/svg+xml,%3Csvg width='360' height='360' viewBox='0 0 360 360' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CradialGradient id='n' cx='50%25' cy='50%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%2306b6d4' stop-opacity='0.14'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg stroke='%2306b6d4' stroke-width='0.9' stroke-opacity='0.32' fill='none'%3E%3Cpath d='M30 40 L120 90 L200 30 L280 110 L340 60'/%3E%3Cpath d='M40 200 L140 150 L220 220 L300 170 L360 230'/%3E%3Cpath d='M-10 280 L80 240 L170 300 L250 250 L330 310'/%3E%3C/g%3E%3Cg stroke='%23668dc8' stroke-width='0.8' stroke-opacity='0.26' fill='none'%3E%3Cpath d='M10 90 L90 200 L170 120 L260 210 L340 130'/%3E%3Cpath d='M60 20 L130 140 L210 70 L300 150 L360 40'/%3E%3C/g%3E%3Cg fill='%2306b6d4' fill-opacity='0.6'%3E%3Ccircle cx='30' cy='40' r='2.6'/%3E%3Ccircle cx='120' cy='90' r='2.6'/%3E%3Ccircle cx='200' cy='30' r='2.8'/%3E%3Ccircle cx='280' cy='110' r='2.6'/%3E%3Ccircle cx='340' cy='60' r='2.4'/%3E%3Ccircle cx='90' cy='200' r='2.6'/%3E%3Ccircle cx='170' cy='120' r='2.6'/%3E%3Ccircle cx='260' cy='210' r='2.8'/%3E%3Ccircle cx='80' cy='240' r='2.6'/%3E%3Ccircle cx='170' cy='300' r='2.8'/%3E%3Ccircle cx='250' cy='250' r='2.6'/%3E%3C/g%3E%3Cg fill='%23668dc8' fill-opacity='0.55'%3E%3Ccircle cx='140' cy='150' r='2.4'/%3E%3Ccircle cx='220' cy='220' r='2.6'/%3E%3Ccircle cx='300' cy='170' r='2.4'/%3E%3Ccircle cx='40' cy='200' r='2.4'/%3E%3Ccircle cx='330' cy='310' r='2.4'/%3E%3Ccircle cx='110' cy='20' r='2.2'/%3E%3Ccircle cx='240' cy='70' r='2.4'/%3E%3C/g%3E%3Crect x='0' y='0' width='360' height='360' fill='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 520px 520px;
+  background-position: center;
+  animation: graph-pan 18s ease-in-out infinite alternate;
+}
+
+.dark .bg-graph {
+  background-image: url("data:image/svg+xml,%3Csvg width='360' height='360' viewBox='0 0 360 360' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3CradialGradient id='nd' cx='50%25' cy='50%25' r='70%25'%3E%3Cstop offset='0%25' stop-color='%238ab3ff' stop-opacity='0.18'/%3E%3Cstop offset='100%25' stop-color='%238ab3ff' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cg stroke='%23c8e7ff' stroke-width='0.9' stroke-opacity='0.34' fill='none'%3E%3Cpath d='M30 40 L120 90 L200 30 L280 110 L340 60'/%3E%3Cpath d='M40 200 L140 150 L220 220 L300 170 L360 230'/%3E%3Cpath d='M-10 280 L80 240 L170 300 L250 250 L330 310'/%3E%3C/g%3E%3Cg stroke='%238ab3ff' stroke-width='0.8' stroke-opacity='0.24' fill='none'%3E%3Cpath d='M10 90 L90 200 L170 120 L260 210 L340 130'/%3E%3Cpath d='M60 20 L130 140 L210 70 L300 150 L360 40'/%3E%3C/g%3E%3Cg fill='%23c8e7ff' fill-opacity='0.6'%3E%3Ccircle cx='30' cy='40' r='2.6'/%3E%3Ccircle cx='120' cy='90' r='2.6'/%3E%3Ccircle cx='200' cy='30' r='2.8'/%3E%3Ccircle cx='280' cy='110' r='2.6'/%3E%3Ccircle cx='340' cy='60' r='2.4'/%3E%3Ccircle cx='90' cy='200' r='2.6'/%3E%3Ccircle cx='170' cy='120' r='2.6'/%3E%3Ccircle cx='260' cy='210' r='2.8'/%3E%3Ccircle cx='80' cy='240' r='2.6'/%3E%3Ccircle cx='170' cy='300' r='2.8'/%3E%3Ccircle cx='250' cy='250' r='2.6'/%3E%3C/g%3E%3Cg fill='%238ab3ff' fill-opacity='0.55'%3E%3Ccircle cx='140' cy='150' r='2.4'/%3E%3Ccircle cx='220' cy='220' r='2.6'/%3E%3Ccircle cx='300' cy='170' r='2.4'/%3E%3Ccircle cx='40' cy='200' r='2.4'/%3E%3Ccircle cx='330' cy='310' r='2.4'/%3E%3Ccircle cx='110' cy='20' r='2.2'/%3E%3Ccircle cx='240' cy='70' r='2.4'/%3E%3C/g%3E%3Crect x='0' y='0' width='360' height='360' fill='url(%23nd)'/%3E%3C/svg%3E");
+}
+
+@keyframes graph-pan {
+  0% { background-position: 40% 48%; }
+  50% { background-position: 50% 52%; }
+  100% { background-position: 58% 50%; }
+}
+
+.timeline-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  width: 2px;
+  background: #cbd5e1;
+}
+
+.dark .timeline-line::before {
+  background: #334155;
+}

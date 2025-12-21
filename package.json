@@ -1,0 +1,16 @@
+{
+  "name": "mjanez.dev",
+  "version": "1.0.0",
+  "description": "Hugo + Tailwind CSS portfolio for mjanez",
+  "scripts": {
+    "dev": "hugo server --disableFastRender --bind 0.0.0.0",
+    "build": "hugo --gc --minify",
+    "preview": "npm run build && npx serve public"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^3.4.1"
+  }
+}

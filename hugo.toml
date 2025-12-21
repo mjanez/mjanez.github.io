@@ -1,0 +1,64 @@
+baseURL = 'https://mjanez.github.io/'
+languageCode = "en-gb"
+title = 'mjanez.dev'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = true
+
+theme = []
+enableRobotsTXT = true
+
+author = "Manuel Jáñez"
+
+[params]
+  author = "Manuel Jáñez"
+  avatar = "https://avatars.githubusercontent.com/u/96422458"
+  hero_avatar = "/images/portrait.jpg"
+
+  [params.brand]
+    short = "mjanez.dev"
+    long = "M. Janez Portfolio"
+
+  [params.links]
+    github = "https://github.com/mjanez"
+    github_pages_repo = "https://github.com/mjanez/mjanez.github.io"
+    linkedin = "https://linkedin.com/in/mjanez"
+    email = "hello@mjanez.dev"
+
+  # Hero copy is resolved via i18n keys to honor strict i18n
+  [params.hero]
+    badge_key = "hero_badge"
+    name_key = "hero_name"
+    role_key = "hero_role"
+    role_badge_key = "hero_role_badge"
+    description_key = "hero_description"
+    status_label_key = "hero_status_label"
+    status_value_key = "hero_status_value"
+
+  [[params.hero_stats]]
+    label_key = "hero_stat_years_label"
+    value_key = "hero_stat_years_value"
+
+  [[params.hero_stats]]
+    label_key = "hero_stat_data_label"
+    value_key = "hero_stat_data_value"
+
+  [[params.hero_stats]]
+    label_key = "hero_stat_gis_label"
+    value_key = "hero_stat_gis_value"
+
+[languages]
+  [languages.en]
+    languageName = 'English'
+    weight = 1
+    [languages.en.params]
+      description = "mjanez.dev - Data & GIS Expert | CKAN | Data Governance & Interoperability"
+
+  [languages.es]
+    languageName = 'Español'
+    weight = 2
+    [languages.es.params]
+      description = "mjanez.dev - Experto en datos y GIS | CKAN | Gobernanza de datos e interoperabilidad"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
