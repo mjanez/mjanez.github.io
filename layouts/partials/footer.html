@@ -1,0 +1,28 @@
+<footer class="py-10 border-t border-slate-200 dark:border-dark-border mt-10">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col gap-4 items-center text-center">
+    <div class="flex gap-3">
+      <a href="{{ .Site.Params.links.github }}" class="p-2 rounded-full bg-slate-100 dark:bg-dark-border text-slate-700 dark:text-slate-200 transition-colors hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-slate-900" aria-label="GitHub">
+        <i data-lucide="github" class="w-5 h-5"></i>
+      </a>
+      <a href="{{ .Site.Params.links.linkedin }}" class="p-2 rounded-full bg-slate-100 dark:bg-dark-border text-slate-700 dark:text-slate-200 transition-colors hover:bg-[#0A66C2] hover:text-white dark:hover:bg-white dark:hover:text-[#0A66C2]" aria-label="LinkedIn">
+        <i data-lucide="linkedin" class="w-5 h-5"></i>
+      </a>
+    </div>
+    <p class="text-sm text-slate-500 dark:text-slate-400">
+      &copy; {{ now.Format "2006" }} {{ T "hero_name" }}.
+      {{ T "footer_rights_prefix" }}
+      <a href="https://gohugo.io" class="text-primary hover:underline" target="_blank" rel="noopener">{{ T "footer_tool_hugo" }}</a>
+      {{ T "footer_and" }}
+      <a href="https://tailwindcss.com" class="text-primary hover:underline" target="_blank" rel="noopener">{{ T "footer_tool_tailwind" }}</a>.
+    </p>
+    <p class="text-xs text-slate-400">
+      {{ T "footer_deployed_prefix" }}
+      <a href="{{ .Site.Params.links.github_pages_repo }}" class="text-primary hover:underline" target="_blank" rel="noopener">{{ T "footer_tool_github_pages" }}</a>.
+    </p>
+    <p class="text-xs text-slate-400">
+      {{ T "footer_license_prefix" }}
+      <a href="https://creativecommons.org/licenses/by/4.0/" class="text-primary hover:underline" target="_blank" rel="noopener">{{ T "footer_license_label" }}</a>
+      {{ T "footer_license_suffix" }}
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,39 @@
+<section id="stack" class="py-16">
+  <div class="max-w-6xl mx-auto px-4 space-y-10">
+    <div class="space-y-2 text-left">
+      <p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">{{ T "nav_stack" }}</p>
+      <div class="flex items-center gap-3">
+        <i data-lucide="layers" class="w-6 h-6 text-primary"></i>
+        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">{{ T "stack_title" }}</h2>
+      </div>
+      <p class="text-slate-600 dark:text-slate-400 max-w-3xl">{{ T "stack_subtitle" }}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {{ range .Site.Data.stack.categories }}
+      {{ $accent := or .accent "#06b6d4" }}
+      <div class="surface-glass rounded-2xl p-5 border border-slate-100 dark:border-dark-border h-full transition-all hover:-translate-y-1 hover:ring-2 hover:ring-primary/30" style="--accent: {{ $accent }};">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <i data-lucide="{{ .icon | default "sparkles" }}" class="w-4 h-4" style="color: {{ $accent }};"></i>
+            <h3 class="text-sm uppercase tracking-wide font-semibold" style="color: {{ $accent }};">{{ T .title_key }}</h3>
+          </div>
+          <span class="w-2.5 h-2.5 rounded-full shadow-glow mt-1" style="background-color: {{ $accent }};"></span>
+        </div>
+        <div class="h-1.5 rounded-full mb-3" style="background: linear-gradient(120deg, {{ $accent }} 0%, {{ $accent }}cc 100%);"></div>
+        {{ with .subtitle_key }}
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3 leading-snug">{{ T . }}</p>
+        {{ end }}
+        <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+          {{ range .items }}
+          <li class="group flex items-center gap-2 transition-colors hover:text-primary">
+            <span class="w-1.5 h-1.5 rounded-full transition-colors" style="background-color: {{ $accent }};"></span>
+            <span>{{ T . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

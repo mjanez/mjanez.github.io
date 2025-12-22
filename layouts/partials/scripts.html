@@ -1,0 +1,225 @@
+<script>
+  (function() {
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    let theme = stored || (prefersDark ? 'dark' : 'light');
+
+    const refreshThemeImages = () => {
+      const imgs = document.querySelectorAll('[data-theme-img]');
+      imgs.forEach((img) => {
+        const target = theme === 'dark' ? img.dataset.srcDark : img.dataset.srcLight;
+        if (!target) return;
+        const withBust = `${target}${target.includes('?') ? '&' : '?'}theme=${theme}`;
+        if (img.src !== withBust) img.src = withBust;
+      });
+    };
+
+    const applyTheme = () => {
+      if (theme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
+      const sun = toggleBtn?.querySelector('.theme-icon-sun');
+      const moon = toggleBtn?.querySelector('.theme-icon-moon');
+      if (sun && moon) {
+        sun.classList.toggle('hidden', theme === 'dark');
+        moon.classList.toggle('hidden', theme !== 'dark');
+      }
+      refreshThemeImages();
+    };
+
+    applyTheme();
+
+    toggleBtn?.addEventListener('click', () => {
+      theme = theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', theme);
+      applyTheme();
+    });
+
+    // Background animation (Abstract linked data graphs)
+    const canvas = document.getElementById('ld-bg');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      const nodes = Array.from({ length: 48 }, () => ({
+        x: Math.random(),
+        y: Math.random(),
+        vx: (Math.random() - 0.5) * 0.0008,
+        vy: (Math.random() - 0.5) * 0.0008,
+        r: 2 + Math.random() * 2,
+        pulse: Math.random() * Math.PI * 2,
+      }));
+
+      const resize = () => {
+        width = canvas.width = window.innerWidth * devicePixelRatio;
+        height = canvas.height = window.innerHeight * devicePixelRatio;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+      };
+      resize();
+      window.addEventListener('resize', resize);
+
+      const draw = () => {
+        ctx.clearRect(0, 0, width, height);
+        const maxDist = Math.min(width, height) * 0.12;
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          n.x += n.vx;
+          n.y += n.vy;
+          if (n.x < 0 || n.x > 1) n.vx *= -1;
+          if (n.y < 0 || n.y > 1) n.vy *= -1;
+        }
+        ctx.save();
+        ctx.scale(devicePixelRatio, devicePixelRatio);
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = (nodes[i].x - nodes[j].x) * window.innerWidth;
+            const dy = (nodes[i].y - nodes[j].y) * window.innerHeight;
+            const d = Math.hypot(dx, dy);
+            if (d < maxDist) {
+              const alpha = 1 - d / maxDist;
+              ctx.strokeStyle = `rgba(6, 182, 212, ${alpha * 0.5})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x * window.innerWidth, nodes[i].y * window.innerHeight);
+              ctx.lineTo(nodes[j].x * window.innerWidth, nodes[j].y * window.innerHeight);
+              ctx.stroke();
+            }
+          }
+        }
+        nodes.forEach((n) => {
+          n.pulse += 0.03;
+          const glow = 0.6 + 0.4 * Math.sin(n.pulse);
+          ctx.fillStyle = `rgba(6, 182, 212, ${glow})`;
+          ctx.beginPath();
+          ctx.arc(n.x * window.innerWidth, n.y * window.innerHeight, n.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        ctx.restore();
+        requestAnimationFrame(draw);
+      };
+      requestAnimationFrame(draw);
+    }
+    let activeHash = window.location.hash || '';
+
+    const syncLangSwitchLinks = () => {
+      const hash = activeHash || window.location.hash;
+      document.querySelectorAll('[data-lang-base]').forEach((link) => {
+        const base = link.getAttribute('data-lang-base') || link.href;
+        const cleanBase = base.split('#')[0];
+        link.href = hash ? `${cleanBase}${hash}` : cleanBase;
+      });
+    };
+
+    syncLangSwitchLinks();
+    window.addEventListener('hashchange', () => {
+      activeHash = window.location.hash || '';
+      syncLangSwitchLinks();
+    });
+    document.addEventListener('click', (event) => {
+      const anchor = event.target.closest('a[href^="#"]');
+      if (anchor) {
+        const targetHash = anchor.getAttribute('href');
+        if (targetHash && targetHash.startsWith('#')) {
+          activeHash = targetHash;
+        }
+        requestAnimationFrame(syncLangSwitchLinks);
+      }
+    });
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            activeHash = `#${entry.target.id}`;
+            syncLangSwitchLinks();
+          }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+      document.querySelectorAll('section[id]').forEach((section) => observer.observe(section));
+    }
+
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileOpenLabel = mobileToggle?.dataset.openLabel;
+    const mobileCloseLabel = mobileToggle?.dataset.closeLabel;
+
+    const setMobileMenuState = (open) => {
+      if (!mobileMenu || !mobileToggle) return;
+      mobileMenu.classList.toggle('hidden', !open);
+      mobileToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const iconOpen = mobileToggle.querySelector('.mobile-menu-icon-open');
+      const iconClose = mobileToggle.querySelector('.mobile-menu-icon-close');
+      iconOpen?.classList.toggle('hidden', open);
+      iconClose?.classList.toggle('hidden', !open);
+      if (mobileOpenLabel && mobileCloseLabel) {
+        mobileToggle.setAttribute('aria-label', open ? mobileCloseLabel : mobileOpenLabel);
+      }
+    };
+
+    setMobileMenuState(false);
+
+    mobileToggle?.addEventListener('click', () => {
+      const isOpen = mobileMenu?.classList.contains('hidden') === false;
+      setMobileMenuState(!isOpen);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuState(false);
+      }
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMobileMenuState(false));
+    });
+
+    const fitSingleLineText = () => {
+      const elements = document.querySelectorAll('[data-fit-text="single-line"]');
+      elements.forEach((el) => {
+        const min = Number(el.dataset.fitMin) || 12;
+        const max = Number(el.dataset.fitMax) || 24;
+        const container = el.parentElement;
+        if (!container) return;
+
+        const applyFit = () => {
+          el.style.fontSize = `${max}px`;
+          const available = container.clientWidth;
+          if (!available) return;
+          let current = max;
+          while (el.scrollWidth > available && current > min) {
+            current -= 1;
+            el.style.fontSize = `${current}px`;
+          }
+        };
+
+        applyFit();
+
+        if ('ResizeObserver' in window) {
+          const ro = new ResizeObserver(applyFit);
+          ro.observe(container);
+          ro.observe(el);
+        } else {
+          window.addEventListener('resize', applyFit);
+        }
+      });
+    };
+
+    fitSingleLineText();
+
+    const ensureLucide = (attempt = 0) => {
+      if (window.lucide?.createIcons) {
+        window.lucide.createIcons();
+        return;
+      }
+      if (attempt < 80) {
+        requestAnimationFrame(() => ensureLucide(attempt + 1));
+      }
+    };
+
+    ensureLucide();
+  })();
+</script>

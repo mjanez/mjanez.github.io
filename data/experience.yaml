@@ -1,0 +1,56 @@
+- id: "neoris"
+  company: "EPAM NEORIS"
+  company_url: "https://www.linkedin.com/company/neoris/"
+  location_key: "location_madrid"
+  accent: "from-cyan-500 via-sky-400 to-blue-500"
+  accent_color: "#06b6d4"
+  current: true
+  tags:
+    - "tag_exp_neoris_1"
+    - "tag_exp_neoris_2"
+    - "tag_exp_neoris_3"
+
+- id: "datosgobes"
+  company: "datos.gob.es"
+  company_url: "https://www.linkedin.com/company/datos-gob-es/"
+  location_key: "location_madrid"
+  accent: "from-blue-500 via-indigo-500 to-purple-500"
+  accent_color: "#3b82f6"
+  current: true
+  tags:
+    - "tag_exp_datosgobes_1"
+    - "tag_exp_datosgobes_2"
+    - "tag_exp_datosgobes_3"
+
+- id: "tragsatec"
+  company: "Tragsatec"
+  company_url: "https://www.linkedin.com/company/tragsatec/"
+  location_key: "location_madrid"
+  accent: "from-emerald-500 via-teal-500 to-cyan-500"
+  accent_color: "#10b981"
+  tags:
+    - "tag_exp_tragsatec_1"
+    - "tag_exp_tragsatec_2"
+    - "tag_exp_tragsatec_3"
+
+- id: "trafair"
+  company: "Universidad de Zaragoza"
+  company_url: "https://www.linkedin.com/school/universidad-de-zaragoza/"
+  location_key: "location_zaragoza"
+  accent: "from-indigo-500 via-purple-500 to-pink-500"
+  accent_color: "#6366f1"
+  tags:
+    - "tag_exp_trafair_1"
+    - "tag_exp_trafair_2"
+    - "tag_exp_trafair_3"
+
+- id: "cotesa"
+  company: "Centro de Observación y Teledetección Espacial (COTESA)"
+  company_url: "https://www.linkedin.com/company/cotesa/"
+  location_key: "location_valladolid"
+  accent: "from-amber-500 via-orange-500 to-rose-500"
+  accent_color: "#f97316"
+  tags:
+    - "tag_exp_cotesa_1"
+    - "tag_exp_cotesa_2"
+    - "tag_exp_cotesa_3"

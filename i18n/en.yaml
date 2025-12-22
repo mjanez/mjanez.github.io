@@ -1,0 +1,365 @@
+- id: nav_brand
+  translation: "mjanez.dev"
+- id: nav_experience
+  translation: "Experience"
+- id: nav_projects
+  translation: "Projects"
+- id: nav_stack
+  translation: "Stack"
+- id: nav_contact
+  translation: "Contact"
+- id: nav_menu_open
+  translation: "Open navigation"
+- id: nav_menu_close
+  translation: "Close navigation"
+- id: theme_toggle_label
+  translation: "Toggle theme"
+
+- id: hero_badge
+  translation: "Open for collaboration"
+- id: hero_name
+  translation: "Manuel Jáñez"
+- id: hero_avatar_alt
+  translation: "Portrait of Manuel Jáñez"
+- id: hero_role
+  translation: "Data & GIS Expert | CKAN | Data Governance & Interoperability"
+- id: hero_role_badge
+  translation: "Data & GIS Expert"
+- id: hero_description
+  translation: "Specialist in technical and semantic interoperability, data infrastructures, and geospatial systems. I turn complex data into standard, accessible, and valuable solutions."
+- id: hero_status_label
+  translation: "Current focus"
+- id: hero_status_value
+  translation: "Data Expert Consultant @ NEORIS"
+- id: hero_cta_projects
+  translation: "Projects"
+- id: hero_cta_github
+  translation: "GitHub"
+- id: hero_cta_linkedin
+  translation: "LinkedIn"
+
+- id: hero_stat_years_label
+  translation: "Experience"
+- id: hero_stat_years_value
+  translation: "+9 years"
+- id: hero_stat_data_value
+  translation: "DATA"
+- id: hero_stat_data_label
+  translation: "Governance & Interoperability"
+- id: hero_stat_gis_value
+  translation: "GIS"
+- id: hero_stat_gis_label
+  translation: "Spatial solutions (OGC/INSPIRE)"
+
+# Experience - Section meta
+- id: exp_title
+  translation: "Professional experience"
+- id: exp_subtitle
+  translation: "Advising public sector teams on data strategy, catalog interoperability, and GIS delivery."
+- id: exp_current_badge
+  translation: "Current"
+
+# Experience - NEORIS
+- id: exp_neoris_period
+  translation: "Nov 2024 — Present"
+- id: exp_neoris_role
+  translation: "Data Experienced Consultant"
+- id: exp_neoris_desc
+  translation: "Technical consultancy in data governance, architecture, and semantic platforms. Bridging regulatory strategy with delivery."
+
+# Experience - datos.gob.es
+- id: exp_datosgobes_period
+  translation: "Nov 2024 — Present"
+- id: exp_datosgobes_role
+  translation: "Senior Data Expert"
+- id: exp_datosgobes_desc
+  translation: "Technical coordination of the National Open Data Catalog. Evolution and implementation of DCAT-AP-ES and NTI-RISP."
+
+# Experience - Tragsatec
+- id: exp_tragsatec_period
+  translation: "Nov 2020 — Feb 2025"
+- id: exp_tragsatec_role
+  translation: "GIS & Open Data Analyst"
+- id: exp_tragsatec_desc
+  translation: "Delivery of CKAN infrastructures, WebGIS (React/Node), and OGC services for Spanish General State Administration bodies. INSPIRE and Linked Data implementation."
+
+# Experience - Universidad de Zaragoza (TRAFAIR)
+- id: exp_trafair_period
+  translation: "Feb 2020 — Nov 2020"
+- id: exp_trafair_role
+  translation: "ICT Researcher"
+- id: exp_trafair_desc
+  translation: "Built ETL pipelines and predictive services for urban air-quality in the TRAFAIR EU project, publishing data via CKAN and citizen dashboards."
+
+# Experience - COTESA
+- id: exp_cotesa_period
+  translation: "Aug 2016 — Aug 2019"
+- id: exp_cotesa_role
+  translation: "GIS Systems Consultant"
+- id: exp_cotesa_desc
+  translation: "Delivered geospatial consulting for mobility and infrastructure programs, crafting ETL workflows and OGC-compliant web mapping solutions."
+
+- id: location_madrid
+  translation: "Madrid, Spain"
+- id: location_zaragoza
+  translation: "Zaragoza, Spain"
+- id: location_valladolid
+  translation: "Valladolid, España"
+- id: location_spain
+  translation: "Spain"
+
+- id: projects_title
+  translation: "Featured projects"
+- id: projects_subtitle
+  translation: "Open source, standards, and geospatial tools"
+- id: projects_view_all
+  translation: "View all on GitHub"
+- id: projects_repo_cta
+  translation: "Open repository"
+
+- id: proj_dcat_title
+  translation: "DCAT-AP-ES"
+- id: proj_dcat_desc
+  translation: "Spain's national open data application profile. Interoperability standard built on European DCAT-AP."
+- id: proj_ckan_title
+  translation: "CKAN Docker"
+- id: proj_ckan_desc
+  translation: "Containerized CKAN stack with GeoDCAT-AP/INSPIRE extensions and hardened production defaults."
+- id: proj_shacl_title
+  translation: "SHACL Validator"
+- id: proj_shacl_desc
+  translation: "Web app for RDF catalog validation against application profiles. Critical for data quality."
+- id: proj_pulse_title
+  translation: "Spain Cultural Pulse"
+- id: proj_pulse_desc
+  translation: "Data visualization on values, politics, and social norms in Spain."
+- id: proj_metadata_quality_title
+  translation: "Metadata Quality (MQA)"
+- id: proj_metadata_quality_desc
+  translation: "React + TypeScript web app delivering FAIR+C scoring for DCAT-AP catalogues, with live demo and Docker-backed deployment options."
+- id: projects_usecases_label
+  translation: "Real-world deployments"
+- id: proj_dcatapes_case_guide
+  translation: "Official DCAT-AP-ES implementation guide"
+- id: proj_nti_case_guide
+  translation: "Official NTI-RISP implementation guide"
+- id: proj_ckan_case_hermes
+  translation: "HERMES data portal (Tragsatec)"
+- id: proj_ckan_case_miteco
+  translation: "Spanish Ministry for the Ecological Transition open data catalog"
+- id: proj_ckan_case_bne
+  translation: "National Library of Spain open data catalog"
+- id: proj_ckan_case_iepnb
+  translation: "Spanish National Biodiversity Inventory catalog"
+- id: proj_pulse_case_live
+  translation: "Live Spain Cultural Pulse dashboard"
+- id: proj_metadata_case_demo
+  translation: "Live Metadata Quality demo"
+- id: proj_sparql_title
+  translation: "SPARQL Naturalizer"
+- id: proj_sparql_desc
+  translation: "Next.js app that turns natural language into SPARQL queries for intuitive data access (AI + semantics)."
+- id: proj_shacl_case_live
+  translation: "Live SHACL Validator"
+
+- id: projects_cases_title
+  translation: "In production"
+- id: proj_dcat_case_application_guide
+  translation: "Implementation guide (datos.gob.es)"
+- id: proj_ckan_case_hermes
+  translation: "HERMES Open Data (Tragsatec)"
+- id: proj_ckan_case_miteco
+  translation: "MITECO Open Data Catalog"
+- id: proj_ckan_case_bne
+  translation: "National Library of Spain Catalog"
+- id: proj_ckan_case_iepnb
+  translation: "IEPNB Biodiversity Catalog"
+- id: proj_pulse_case_dashboard
+  translation: "Spain Cultural Pulse live site"
+- id: proj_metadata_case_demo
+  translation: "Metadata Quality live demo"
+
+- id: stack_title
+  translation: "Tech stack & tools"
+- id: stack_subtitle
+  translation: "Field-tested technologies for data platforms, semantics, and GIS."
+- id: stack_cat_gis
+  translation: "GIS & Geo"
+- id: stack_cat_gis_subtitle
+  translation: "Spatial solutions"
+- id: stack_cat_open
+  translation: "Data"
+- id: stack_cat_open_subtitle
+  translation: "Interoperability and quality"
+- id: stack_cat_web
+  translation: "Full Stack"
+- id: stack_cat_web_subtitle
+  translation: "Full stack delivery"
+- id: stack_cat_infra
+  translation: "Infrastructure"
+- id: stack_cat_infra_subtitle
+  translation: "Infrastructure and automation"
+
+- id: stack_item_spatial_datastores
+  translation: "PostGIS / Sedona"
+- id: stack_item_geoserver_platforms
+  translation: "GeoServer / MapServer"
+- id: stack_item_map_clients
+  translation: "OpenLayers / Leaflet"
+- id: stack_item_python_geo
+  translation: "Py / GDAL"
+- id: stack_item_semantic_quality
+  translation: "RDF / SHACL / SPARQL"
+- id: stack_item_catalog_platforms
+  translation: "CKAN / Datahub / Portal.js"
+- id: stack_item_graph_databases
+  translation: "Virtuoso / Neo4j / Protégé"
+- id: stack_item_data_pipeline_governance
+  translation: "ETL / Great Expectations"
+- id: stack_item_backend_python
+  translation: "Python (FastAPI, Django)"
+- id: stack_item_backend_node
+  translation: "Node.js / Express"
+- id: stack_item_frontend_react
+  translation: "React / Next.js"
+- id: stack_item_design_systems
+  translation: "Tailwind CSS"
+- id: stack_item_containers_orchestration
+  translation: "Docker / Kubernetes"
+- id: stack_item_ci_cd
+  translation: "GitHub Actions / Jenkins"
+- id: stack_item_cloud_platforms
+  translation: "AWS / GCP"
+- id: stack_item_ops_automation
+  translation: "Terraform / Ansible"
+
+- id: contact_title
+  translation: "Boosting data platforms"
+- id: contact_body
+  translation: "Focused on the analysis, development, and implementation of application profiles (DCAT-AP-ES), data publishing platforms (Open Data/ERPD), Data Spaces, and Semantic Web. My approach prioritizes information exchange ensuring the highest level of technical and regulatory interoperability."
+- id: contact_primary_cta
+  translation: "Send email"
+- id: contact_secondary_cta
+  translation: "Open GitHub"
+
+- id: github_stats_live
+  translation: "Live GitHub signal"
+- id: github_stats_title
+  translation: "Coding stats"
+- id: github_stats_subtitle
+  translation: "Realtime snapshot directly from GitHub."
+- id: github_stats_view_profile
+  translation: "Open GitHub profile"
+- id: github_stats_followers
+  translation: "Followers"
+- id: github_stats_repos
+  translation: "Public repos"
+- id: github_stats_stars
+  translation: "Stars"
+- id: github_stats_latest
+  translation: "Latest push"
+- id: github_stats_updated
+  translation: "Updated"
+- id: github_stats_error
+  translation: "Stats unavailable"
+- id: github_stats_overview_alt
+  translation: "GitHub overview card"
+- id: github_stats_langs_alt
+  translation: "Top languages card"
+
+- id: footer_rights_prefix
+  translation: "Built with"
+- id: footer_and
+  translation: "and"
+- id: footer_tool_hugo
+  translation: "Hugo"
+- id: footer_tool_tailwind
+  translation: "Tailwind CSS"
+- id: footer_deployed_prefix
+  translation: "Deployed on"
+- id: footer_tool_github_pages
+  translation: "GitHub Pages"
+- id: footer_license_prefix
+  translation: "Content available under"
+- id: footer_license_label
+  translation: "CC-BY 4.0"
+- id: footer_license_suffix
+  translation: "except where noted."
+
+- id: tag_data_strategy
+  translation: "Data strategy"
+- id: tag_ckan
+  translation: "CKAN"
+- id: tag_application_standards
+  translation: "Standard"
+- id: tag_dcat
+  translation: "DCAT-AP"
+- id: tag_semantics
+  translation: "Semantics"
+- id: tag_dcatap
+  translation: "DCAT-AP"
+- id: tag_gis
+  translation: "GIS"
+- id: tag_webgis
+  translation: "WebGIS"
+- id: tag_inspire
+  translation: "INSPIRE"
+- id: tag_docker
+  translation: "Docker"
+- id: tag_data_portal
+  translation: "Data portal"
+- id: tag_validation
+  translation: "Validation"
+- id: tag_rdf
+  translation: "RDF"
+- id: tag_viz
+  translation: "Data viz"
+- id: tag_data_politics
+  translation: "POLData"
+- id: tag_react
+  translation: "React"
+- id: tag_geoserver
+  translation: "GeoServer"
+- id: tag_ai
+  translation: "AI"
+- id: tag_next
+  translation: "Next.js"
+- id: tag_open_data
+  translation: "Open data"
+- id: tag_sparql
+  translation: "SPARQL"
+- id: tag_shacl
+  translation: "SHACL"
+- id: tag_mqa
+  translation: "MQA"
+
+- id: tag_exp_neoris_1
+  translation: "Data strategy"
+- id: tag_exp_neoris_2
+  translation: "SolArch"
+- id: tag_exp_neoris_3
+  translation: "Web 3.0"
+- id: tag_exp_datosgobes_1
+  translation: "DCAT-AP"
+- id: tag_exp_datosgobes_2
+  translation: "Standards"
+- id: tag_exp_datosgobes_3
+  translation: "CKAN"
+- id: tag_exp_tragsatec_1
+  translation: "GIS"
+- id: tag_exp_tragsatec_2
+  translation: "CKAN"
+- id: tag_exp_tragsatec_3
+  translation: "SolArch"
+- id: tag_exp_trafair_1
+  translation: "GIS"
+- id: tag_exp_trafair_2
+  translation: "Standards"
+- id: tag_exp_trafair_3
+  translation: "Open data"
+- id: tag_exp_cotesa_1
+  translation: "GIS"
+- id: tag_exp_cotesa_2
+  translation: "WebGIS"
+- id: tag_exp_cotesa_3
+  translation: "ETL & Automation"
