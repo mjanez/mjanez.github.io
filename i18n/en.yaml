@@ -55,7 +55,7 @@
 - id: exp_title
   translation: "Professional experience"
 - id: exp_subtitle
-  translation: "Advising public sector teams on data strategy, catalog interoperability, and GIS delivery."
+  translation: "Advising and developing data strategies, interoperability, and GIS solutions."
 - id: exp_current_badge
   translation: "Current"
 
@@ -111,7 +111,7 @@
 - id: projects_title
   translation: "Featured projects"
 - id: projects_subtitle
-  translation: "Open source, standards, and geospatial tools"
+  translation: "Open Source, standards, and GIS&Data solutions."
 - id: projects_view_all
   translation: "View all on GitHub"
 - id: projects_repo_cta
