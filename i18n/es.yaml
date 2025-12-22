@@ -55,7 +55,7 @@
 - id: exp_title
   translation: "Experiencia profesional"
 - id: exp_subtitle
-  translation: "Asesoría a equipos públicos en estrategia de datos, interoperabilidad de catálogos y entrega GIS."
+  translation: "Asesoría y desarrollo de estrategias de datos, interoperabilidad y soluciones GIS."
 - id: exp_current_badge
   translation: "Actual"
 
@@ -111,7 +111,7 @@
 - id: projects_title
   translation: "Proyectos destacados"
 - id: projects_subtitle
-  translation: "Open source, estándares y herramientas geo"
+  translation: "Open Source, estándares y soluciones GIS&Data."
 - id: projects_view_all
   translation: "Ver todos en GitHub"
 - id: projects_repo_cta
