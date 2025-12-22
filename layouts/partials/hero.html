@@ -1,0 +1,68 @@
+{{ $hero := .Site.Params.hero }}
+<section class="relative pt-20 pb-16" id="hero">
+  <div class="relative max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+    <div class="space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-primary/10 text-primary border border-primary/30 shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+        <span>{{ T $hero.badge_key }}</span>
+      </div>
+
+      <div class="space-y-2">
+        <p class="text-sm text-slate-500 dark:text-slate-400 font-mono">{{ T "nav_brand" }}</p>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 dark:text-white">
+          {{ T $hero.name_key }}
+        </h1>
+        <p class="text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed whitespace-normal sm:whitespace-nowrap" data-fit-text="single-line" data-fit-min="14" data-fit-max="28">{{ T $hero.role_key }}</p>
+      </div>
+
+      <p class="text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl">
+        {{ T $hero.description_key }}
+      </p>
+
+      <div class="flex flex-col md:grid md:grid-cols-3 gap-3 w-full">
+        <a href="#projects" class="w-full px-5 py-3 rounded-xl bg-gradient-to-r from-primary to-blue-500 hover:from-cyan-400 hover:to-sky-600 text-white font-semibold shadow-[0_20px_45px_-28px_rgba(14,165,233,0.8)] flex items-center justify-center gap-2 transition-all">
+          <i data-lucide="layers" class="w-5 h-5"></i>
+          <span>{{ T "hero_cta_projects" }}</span>
+        </a>
+        <a href="{{ .Site.Params.links.github }}" class="w-full px-5 py-3 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-semibold shadow-[0_20px_45px_-28px_rgba(15,23,42,0.7)] flex items-center justify-center gap-2 border border-slate-900/15 dark:border-white/40 transition-all hover:bg-white hover:text-slate-900 dark:hover:bg-slate-900 dark:hover:text-white">
+          <i data-lucide="github" class="w-5 h-5"></i>
+          <span>{{ T "hero_cta_github" }}</span>
+        </a>
+        <a href="{{ .Site.Params.links.linkedin }}" class="w-full px-5 py-3 rounded-xl border border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-all flex items-center justify-center gap-2 font-semibold bg-white/70 dark:bg-dark-card/60 shadow-sm hover:shadow-[0_20px_45px_-28px_rgba(10,102,194,0.6)]">
+          <i data-lucide="linkedin" class="w-5 h-5"></i>
+          <span>{{ T "hero_cta_linkedin" }}</span>
+        </a>
+      </div>
+
+      <div class="surface-glass rounded-2xl p-4 md:p-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {{ range .Site.Params.hero_stats }}
+        <div class="text-center sm:text-left">
+          <p class="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white">{{ T .value_key }}</p>
+          <p class="text-[0.7rem] text-slate-500 uppercase tracking-wide leading-snug">{{ T .label_key }}</p>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="relative flex justify-center">
+      <div class="absolute -inset-16 bg-gradient-to-br from-primary/25 via-purple-500/10 to-blue-500/30 blur-[120px] rounded-full animate-pulse-slow"></div>
+      <div class="absolute inset-6 rounded-[36px] border border-primary/30 blur-[30px] opacity-70"></div>
+      <div class="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 surface-glass overflow-hidden rounded-3xl border border-white/30 dark:border-white/10 shadow-2xl transition-transform duration-700 motion-safe:animate-float motion-reduce:animate-none hover:-translate-y-2 hover:shadow-[0_0_60px_-18px_rgba(6,182,212,0.75)]">
+        {{ $heroAvatar := or .Site.Params.hero_avatar .Site.Params.avatar }}
+        <img src="{{ $heroAvatar }}" alt="{{ T "hero_avatar_alt" }}" class="w-full h-full object-cover mix-blend-multiply dark:mix-blend-screen">
+        <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent"></div>
+        {{ $roleBadgeKey := or $hero.role_badge_key $hero.role_key }}
+        {{ $experience := .Site.Data.experience }}
+        <div class="absolute bottom-0 inset-x-0 p-4 flex items-center justify-between">
+          {{ if gt (len $experience) 0 }}
+            {{ with index $experience 0 }}
+              <span class="block px-3 py-1 text-xs rounded-full bg-primary/20 text-white border border-white/10 truncate">{{ T $roleBadgeKey }} @ {{ .company }}</span>
+            {{ end }}
+          {{ else }}
+            <span class="block px-3 py-1 text-xs rounded-full bg-primary/20 text-white border border-white/10 truncate">{{ T $roleBadgeKey }}</span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+{{- $base := .Site.BaseURL -}}
+{{- $image := .Site.Params.hero_avatar | default "/images/portrait.jpg" -}}
+{{- $email := .Site.Params.links.email | default "" -}}
+{{- $sameAs := slice .Site.Params.links.github .Site.Params.links.linkedin -}}
+{{- $faq := slice
+  (dict "q" (T "faq_services_q") "a" (T "faq_services_a"))
+  (dict "q" (T "faq_stack_q") "a" (T "faq_stack_a"))
+  (dict "q" (T "faq_contact_q") "a" (T "faq_contact_a"))
+-}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ $base }}",
+      "image": "{{ $image }}",
+      "email": {{ if $email }}"mailto:{{ $email }}"{{ else }}null{{ end }},
+      "sameAs": [{{ range $i, $s := $sameAs }}{{ if $i }},{{ end }}"{{ $s }}"{{ end }}]
+    },
+    {
+      "@type": "WebSite",
+      "name": "{{ .Site.Title }}",
+      "url": "{{ $base }}",
+      "inLanguage": "{{ .Site.Language.Lang }}"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {{- range $i, $f := $faq -}}
+        {{- if $i }},{{ end }}
+        {
+          "@type": "Question",
+          "name": "{{ $f.q }}",
+          "acceptedAnswer": {"@type": "Answer", "text": "{{ $f.a }}"}
+        }
+        {{- end }}
+      ]
+    }
+  ]
+}
+</script>

@@ -1,0 +1,63 @@
+<nav class="sticky top-6 z-40 w-full max-w-6xl mx-auto px-4">
+  {{ $currentLang := .Site.Language.Lang }}
+  {{ $homes := append (slice .Site.Home) .Site.Home.Translations }}
+  <div class="surface-glass rounded-2xl px-4 md:px-6 py-3 flex flex-col gap-3">
+    <div class="flex flex-wrap items-center justify-between gap-3 md:gap-6">
+      <a href="{{ .Site.Home.RelPermalink }}" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-white/50 shadow-glow">
+          <img src="{{ .Site.Params.avatar }}" alt="{{ .Site.Params.brand.short }}" class="w-full h-full object-cover">
+        </div>
+        <div class="font-semibold text-lg text-slate-900 dark:text-white leading-tight">{{ .Site.Params.brand.short }}</div>
+      </a>
+
+      <div class="hidden md:flex flex-1 items-center justify-center gap-6 text-sm font-medium">
+        <a href="#experience" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{{ T "nav_experience" }}</a>
+        <a href="#projects" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{{ T "nav_projects" }}</a>
+        <a href="#stack" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{{ T "nav_stack" }}</a>
+        <a href="#contact" class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary transition-colors">{{ T "nav_contact" }}</a>
+      </div>
+
+      <div class="flex items-center gap-2 md:gap-3">
+        <div class="hidden md:flex items-center gap-2 pr-3 border-r border-slate-200 dark:border-dark-border">
+          {{ range $homes }}
+            {{ $lang := .Site.Language }}
+            {{ if ne $lang.Lang $currentLang }}
+              <a href="{{ .RelPermalink }}" data-lang-base="{{ .RelPermalink }}" class="lang-switch h-10 px-3 text-xs uppercase rounded-lg border border-slate-200 dark:border-dark-border hover:bg-slate-100 dark:hover:bg-dark-border transition-colors inline-flex items-center gap-2 bg-white/60 dark:bg-dark-card/60">
+                <i data-lucide="languages" class="w-4 h-4 text-primary"></i>
+                <span>{{ $lang.LanguageName }}</span>
+              </a>
+            {{ end }}
+          {{ end }}
+        </div>
+        <button id="theme-toggle" type="button" class="h-10 w-10 rounded-lg border border-slate-200 dark:border-dark-border hover:bg-slate-100 dark:hover:bg-dark-border transition-colors inline-flex items-center justify-center" aria-label="{{ T "theme_toggle_label" }}">
+          <i data-lucide="sun" class="w-5 h-5 theme-icon-sun"></i>
+          <i data-lucide="moon" class="w-5 h-5 theme-icon-moon hidden"></i>
+        </button>
+        <button id="mobile-menu-toggle" type="button" class="md:hidden h-10 w-10 rounded-lg border border-slate-200 dark:border-dark-border hover:bg-slate-100 dark:hover:bg-dark-border transition-colors inline-flex items-center justify-center" aria-controls="mobile-menu" aria-expanded="false" aria-label="{{ T "nav_menu_open" }}" data-open-label="{{ T "nav_menu_open" }}" data-close-label="{{ T "nav_menu_close" }}">
+          <i data-lucide="menu" class="w-5 h-5 mobile-menu-icon-open"></i>
+          <i data-lucide="x" class="w-5 h-5 mobile-menu-icon-close hidden"></i>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden flex-col gap-4 pt-3 border-t border-slate-200 dark:border-dark-border">
+      <div class="flex flex-col gap-2 text-sm font-medium">
+        <a href="#experience" class="px-4 py-2 rounded-lg border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 text-slate-700 dark:text-slate-200 hover:border-primary hover:text-primary transition-colors">{{ T "nav_experience" }}</a>
+        <a href="#projects" class="px-4 py-2 rounded-lg border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 text-slate-700 dark:text-slate-200 hover:border-primary hover:text-primary transition-colors">{{ T "nav_projects" }}</a>
+        <a href="#stack" class="px-4 py-2 rounded-lg border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 text-slate-700 dark:text-slate-200 hover:border-primary hover:text-primary transition-colors">{{ T "nav_stack" }}</a>
+        <a href="#contact" class="px-4 py-2 rounded-lg border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 text-slate-700 dark:text-slate-200 hover:border-primary hover:text-primary transition-colors">{{ T "nav_contact" }}</a>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        {{ range $homes }}
+          {{ $lang := .Site.Language }}
+          {{ if ne $lang.Lang $currentLang }}
+            <a href="{{ .RelPermalink }}" data-lang-base="{{ .RelPermalink }}" class="lang-switch flex-1 min-w-[140px] px-3 py-2 text-xs uppercase rounded-lg border border-slate-200 dark:border-dark-border bg-white/60 dark:bg-dark-card/60 hover:bg-slate-100 dark:hover:bg-dark-border transition-colors inline-flex items-center justify-center gap-2">
+              <i data-lucide="languages" class="w-4 h-4 text-primary"></i>
+              <span>{{ $lang.LanguageName }}</span>
+            </a>
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</nav>
