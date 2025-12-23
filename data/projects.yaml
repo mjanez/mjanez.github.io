@@ -83,7 +83,7 @@ projects:
       - "tag_react"
     cases:
       - icon: "radar"
-        url: "https://mjanez.github.io/metadata-quality-react/"
+        url: "https://metadata-quality.mjanez.dev/"
         label_key: "proj_metadata_case_demo"
 
   - id: "sparql-naturalizer"
