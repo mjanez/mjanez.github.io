@@ -117,6 +117,39 @@
 - id: projects_repo_cta
   translation: "Abrir repositorio"
 
+- id: more_projects
+  translation: "Proyectos paralelos y experimentos:"
+- id: more_projects_desc
+  translation: "Listado automático desde GitHub, priorizando repos activos."
+- id: dynamic_projects_loading
+  translation: "Contactando a GitHub..."
+- id: dynamic_projects_no_results
+  translation: "No se encontraron repositorios públicos."
+- id: dynamic_projects_no_description
+  translation: "Sin descripción disponible."
+- id: dynamic_projects_language_fallback
+  translation: "Código"
+- id: dynamic_projects_cta_live
+  translation: "Sitio web"
+- id: dynamic_projects_cta_code
+  translation: "Ver código"
+- id: dynamic_projects_error_message
+  translation: "No se pudieron cargar los repositorios dinámicamente."
+- id: dynamic_projects_error_link
+  translation: "Ver todo en GitHub ->"
+- id: dynamic_projects_invalid_list
+  translation: "La respuesta no es una lista válida."
+- id: dynamic_projects_api_error
+  translation: "Error de la API de GitHub"
+- id: dynamic_projects_forks_label
+  translation: "Forks"
+- id: dynamic_projects_scroll_prev
+  translation: "Desplazar a la izquierda"
+- id: dynamic_projects_scroll_next
+  translation: "Desplazar a la derecha"
+- id: dynamic_projects_scroll_progress
+  translation: "Progreso del scroll"
+
 - id: proj_dcat_title
   translation: "DCAT-AP-ES"
 - id: proj_dcat_desc

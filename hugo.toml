@@ -24,6 +24,10 @@ author = "Manuel Jáñez"
     linkedin = "https://linkedin.com/in/mjanez"
     email = "hello@mjanez.dev"
 
+  [params.github]
+    username = "mjanez"
+    excluded_repos = ["mjanez.github.io", "mjanez", "readme", "mjanez.dev", "portfolio"]
+
   # Hero copy is resolved via i18n keys to honor strict i18n
   [params.hero]
     badge_key = "hero_badge"

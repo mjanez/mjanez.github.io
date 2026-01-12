@@ -23,6 +23,31 @@ Sitio estático construido con Hugo + Tailwind. Todo el contenido visible se ges
 - `npm run dev` levanta Hugo en watch y sirve Tailwind vía PostCSS.
 - `npm run build` genera el sitio minificado en `public/`.
 
+### Solución de problemas en desarrollo
+
+**¿Los cambios no se reflejan en el navegador?**
+
+Hugo cachea agresivamente. Si tus ediciones no aparecen:
+
+1. **Detén el servidor** (`Ctrl+C` o `pkill -f "hugo server"`)
+2. **Limpia la caché**: `rm -rf public resources`
+3. **Reinicia**: `npm run dev`
+
+Para cambios críticos (layouts, partials, config), siempre limpia la caché primero:
+```bash
+rm -rf public resources && npm run dev
+```
+
+**¿Por qué ocurre esto?**
+- El modo Fast Render de Hugo (incluso desactivado) puede cachear templates parciales
+- La carpeta `resources/` almacena assets procesados (CSS, JS) que pueden quedar obsoletos
+- La caché del navegador también puede interferir - prueba recarga forzada (`Ctrl+Shift+R` / `Cmd+Shift+R`)
+
+**Comando de rebuild limpio:**
+```bash
+npm run build  # El build de producción siempre limpia todo
+```
+
 ## Estructura rápida
 - `data/*.es.yaml` y `data/*.en.yaml`: experiencia, proyectos y stack localizados.
 - `i18n/`: claves estáticas (navegación, CTA, etc.).

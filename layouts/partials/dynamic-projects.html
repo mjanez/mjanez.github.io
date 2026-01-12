@@ -1,0 +1,259 @@
+<section id="dynamic-projects" class="py-16 scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-4 space-y-8">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">{{ T "nav_projects" }}</p>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                    <i data-lucide="radar" class="text-primary"></i>
+                    <span>{{ T "more_projects" }}</span>
+                </h2>
+                <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl">{{ T "more_projects_desc" }}</p>
+            </div>
+            <div class="flex gap-3 self-start md:self-end">
+                <button type="button" data-scroll-control="prev" aria-label='{{ T "dynamic_projects_scroll_prev" }}' class="h-11 w-11 rounded-xl border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 hover:bg-slate-100 dark:hover:bg-dark-border transition-all text-slate-600 dark:text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </button>
+                <button type="button" data-scroll-control="next" aria-label='{{ T "dynamic_projects_scroll_next" }}' class="h-11 w-11 rounded-xl border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 hover:bg-slate-100 dark:hover:bg-dark-border transition-all text-slate-600 dark:text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed">
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <div class="flex items-center gap-3">
+                <div class="flex-1 h-1.5 rounded-full bg-slate-200 dark:bg-slate-700/70 overflow-hidden">
+                    <span data-scroll-progress role="progressbar" aria-label='{{ T "dynamic_projects_scroll_progress" }}' aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="block h-full w-0 bg-gradient-to-r from-primary to-blue-500 transition-[width] duration-300 ease-out"></span>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="relative rounded-3xl border border-slate-100 dark:border-dark-border bg-white/60 dark:bg-dark-card/70 backdrop-blur-xl px-4 py-8 overflow-hidden">
+                    <span aria-hidden="true" class="pointer-events-none absolute inset-y-6 left-0 w-20 bg-gradient-to-r from-white/95 via-white/40 to-transparent dark:from-dark-bg dark:via-dark-bg/40"></span>
+                    <span aria-hidden="true" class="pointer-events-none absolute inset-y-6 right-0 w-20 bg-gradient-to-l from-white/95 via-white/40 to-transparent dark:from-dark-bg dark:via-dark-bg/40"></span>
+
+                    <div id="github-projects-container" class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+                        <div class="snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] h-56 glass rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 bg-slate-100/60 dark:bg-dark-card/40 animate-pulse flex items-center justify-center text-center">
+                            <div class="flex flex-col items-center gap-3 text-slate-400">
+                                <div class="w-7 h-7 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
+                                <p class="text-sm">{{ T "dynamic_projects_loading" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<script>    
+    document.addEventListener('DOMContentLoaded', function() {
+        const copy = {
+            loading: "{{ T "dynamic_projects_loading" }}",
+            noResults: "{{ T "dynamic_projects_no_results" }}",
+            noDescription: "{{ T "dynamic_projects_no_description" }}",
+            languageFallback: "{{ T "dynamic_projects_language_fallback" }}",
+            ctaLive: "{{ T "dynamic_projects_cta_live" }}",
+            ctaCode: "{{ T "dynamic_projects_cta_code" }}",
+            errorMessage: "{{ T "dynamic_projects_error_message" }}",
+            errorLink: "{{ T "dynamic_projects_error_link" }}",
+            invalidList: "{{ T "dynamic_projects_invalid_list" }}",
+            apiError: "{{ T "dynamic_projects_api_error" }}",
+            forks: "{{ T "dynamic_projects_forks_label" }}"
+        };
+
+        const githubUsername = '{{ .Site.Params.github.username }}';
+        const excludedRepos = new Set({{ .Site.Params.github.excluded_repos | jsonify | safeJS }}.map(name => name.toLowerCase()));
+        const container = document.getElementById('github-projects-container');
+        const scrollButtons = document.querySelectorAll('[data-scroll-control]');
+        const scrollProgress = document.querySelector('[data-scroll-progress]');
+        let updateScrollState = null;
+
+        if (!container) {
+            console.error('[dynamic-projects] Container not found');
+            return;
+        }
+
+        const enhanceScrollUi = () => {
+            const update = () => {
+                if (!scrollProgress) {
+                    return;
+                }
+                const maxScroll = Math.max(container.scrollWidth - container.clientWidth, 0);
+                const ratio = maxScroll === 0 ? 1 : container.scrollLeft / maxScroll;
+                const clamped = Math.max(0, Math.min(1, ratio));
+                scrollProgress.style.width = (clamped * 100) + '%';
+                scrollProgress.setAttribute('aria-valuenow', String(Math.round(clamped * 100)));
+
+                scrollButtons.forEach((button) => {
+                    const direction = button.dataset.scrollControl;
+                    if (!direction) {
+                        return;
+                    }
+                    const disablePrev = clamped <= 0.01;
+                    const disableNext = clamped >= 0.99;
+                    const shouldDisable = maxScroll === 0 || (direction === 'prev' ? disablePrev : disableNext);
+                    button.disabled = shouldDisable;
+                });
+            };
+
+            const scrollByStep = (direction) => {
+                const step = Math.max(container.clientWidth * 0.85, 280);
+                container.scrollBy({ left: direction * step, behavior: 'smooth' });
+            };
+
+            scrollButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const direction = button.dataset.scrollControl === 'next' ? 1 : -1;
+                    scrollByStep(direction);
+                });
+            });
+
+            container.addEventListener('scroll', update);
+            window.addEventListener('resize', update);
+
+            update();
+            updateScrollState = update;
+        };
+
+        enhanceScrollUi();
+
+        const refreshScrollUi = () => {
+            if (typeof updateScrollState === 'function') {
+                requestAnimationFrame(updateScrollState);
+            }
+        };
+
+        const apiUrl = 'https://api.github.com/users/'
+            + encodeURIComponent(githubUsername)
+            + '/repos?sort=updated&per_page=100&type=public';
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`${copy.apiError}: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(repos => {
+                if (!Array.isArray(repos)) {
+                    throw new Error(copy.invalidList);
+                }
+
+                // FILTRADO
+                const filteredRepos = repos.filter(repo => {
+                    if (!repo || repo.private || repo.archived || repo.disabled) {
+                        return false;
+                    }
+                    const repoName = (repo.name || '').toLowerCase();
+                    if (excludedRepos.has(repoName)) {
+                        return false;
+                    }
+                    return true;
+                });
+
+                if (filteredRepos.length === 0) {
+                    container.innerHTML = `<div class="snap-center shrink-0 w-full p-10 text-center text-slate-500 dark:text-slate-400 border border-dashed border-slate-200 dark:border-slate-700 rounded-2xl">${copy.noResults}</div>`;
+                    refreshScrollUi();
+                    return;
+                }
+
+                // ORDENACIÓN: Por forks_count DESC, luego por updated_at DESC
+                filteredRepos.sort((a, b) => {
+                    const aForks = a.forks_count || 0;
+                    const bForks = b.forks_count || 0;
+                    
+                    if (bForks !== aForks) {
+                        return bForks - aForks;
+                    }
+                    
+                    const aDate = Date.parse(a.updated_at) || 0;
+                    const bDate = Date.parse(b.updated_at) || 0;
+                    return bDate - aDate;
+                });
+
+                container.innerHTML = '';
+
+                filteredRepos.forEach(repo => {
+                    const hasPages = repo.has_pages;
+                    const homepage = (repo.homepage || '').trim();
+                    let projectUrl = repo.html_url;
+                    let isLive = false;
+
+                    if (homepage.length > 0) {
+                        projectUrl = homepage;
+                        isLive = true;
+                    } else if (hasPages) {
+                        projectUrl = 'https://' + githubUsername + '.github.io/' + repo.name;
+                        isLive = true;
+                    }
+                    
+                    const forksCount = repo.forks_count || 0;
+                    const language = repo.language || copy.languageFallback;
+
+                    const card = document.createElement('div');
+                    card.className = 'snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] flex flex-col glass rounded-2xl border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-all duration-300';
+
+                    card.innerHTML = `
+                        <div class="p-6 flex flex-col h-full">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-2 rounded-xl ${isLive ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400'}">
+                                    <i data-lucide="${isLive ? 'globe' : 'git-branch'}" class="w-5 h-5"></i>
+                                </div>
+                                <div class="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400" title="${copy.forks}">
+                                    <i data-lucide="git-fork" class="w-3.5 h-3.5"></i>
+                                    <span>${forksCount}</span>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-slate-100 line-clamp-1" title="${repo.name}">
+                                ${repo.name}
+                            </h3>
+
+                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3 flex-grow">
+                                ${repo.description || copy.noDescription}
+                            </p>
+
+                            <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between gap-2">
+                                <span class="text-xs font-mono text-slate-400">
+                                    ${language}
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center overflow-hidden text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-all">
+                                        <i data-lucide="github" class="w-4 h-4 shrink-0"></i>
+                                        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-out">${copy.ctaCode}</span>
+                                    </a>
+                                    ${isLive ? `<a href="${projectUrl}" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center overflow-hidden text-sm font-semibold text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all" title="${copy.ctaLive}">
+                                        <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
+                                        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-out">${copy.ctaLive}</span>
+                                    </a>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    container.appendChild(card);
+                });
+
+                refreshScrollUi();
+
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            })
+            .catch(error => {
+                console.error('[dynamic-projects] ❌ ERROR:', error);
+                container.innerHTML = `
+                    <div class="snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] flex flex-col justify-center items-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 text-center">
+                        <i data-lucide="github" class="w-8 h-8 mb-3 text-slate-400"></i>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">${copy.errorMessage}</p>
+                        <a href="https://github.com/${githubUsername}?tab=repositories" target="_blank" class="text-xs text-blue-600 hover:underline">${copy.errorLink}</a>
+                    </div>
+                `;
+                refreshScrollUi();
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            });
+    });
+</script>
