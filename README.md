@@ -23,6 +23,31 @@ Static site built with Hugo + Tailwind. Visible content lives in `data/` (per la
 - `npm run dev` runs Hugo in watch mode and serves Tailwind via PostCSS.
 - `npm run build` builds the minified site into `public/`.
 
+### Development troubleshooting
+
+**Changes not reflecting in the browser?**
+
+Hugo caches aggressively. If your edits don't appear:
+
+1. **Stop the server** (`Ctrl+C` or `pkill -f "hugo server"`)
+2. **Clear cache**: `rm -rf public resources`
+3. **Restart**: `npm run dev`
+
+For critical changes (layouts, partials, config), always clear cache first:
+```bash
+rm -rf public resources && npm run dev
+```
+
+**Why does this happen?**
+- Hugo's Fast Render mode (even when disabled) can cache partial templates
+- The `resources/` folder stores processed assets (CSS, JS) that may be stale
+- Browser cache can also interfere - try hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`)
+
+**Clean rebuild command:**
+```bash
+npm run build  # Production build always cleans everything
+```
+
 ## Quick structure
 - `data/*.es.yaml` and `data/*.en.yaml`: localized experience, projects, stack.
 - `i18n/`: static UI strings (nav, CTA, etc.).

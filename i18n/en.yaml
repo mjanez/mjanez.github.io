@@ -104,7 +104,7 @@
 - id: location_zaragoza
   translation: "Zaragoza, Spain"
 - id: location_valladolid
-  translation: "Valladolid, España"
+  translation: "Valladolid, Spain"
 - id: location_spain
   translation: "Spain"
 
@@ -116,6 +116,39 @@
   translation: "View all on GitHub"
 - id: projects_repo_cta
   translation: "Open repository"
+
+- id: more_projects
+  translation: "Side Projects & Experiments"
+- id: more_projects_desc
+  translation: "Auto-synced from GitHub, prioritizing live deployments."
+- id: dynamic_projects_loading
+  translation: "Contacting GitHub..."
+- id: dynamic_projects_no_results
+  translation: "No public repositories found."
+- id: dynamic_projects_no_description
+  translation: "No description provided."
+- id: dynamic_projects_language_fallback
+  translation: "Code"
+- id: dynamic_projects_cta_live
+  translation: "Website"
+- id: dynamic_projects_cta_code
+  translation: "View Code"
+- id: dynamic_projects_error_message
+  translation: "Could not load repositories dynamically."
+- id: dynamic_projects_error_link
+  translation: "See everything on GitHub ->"
+- id: dynamic_projects_invalid_list
+  translation: "Response is not a valid list."
+- id: dynamic_projects_api_error
+  translation: "GitHub API error"
+- id: dynamic_projects_forks_label
+  translation: "Forks"
+- id: dynamic_projects_scroll_prev
+  translation: "Scroll left"
+- id: dynamic_projects_scroll_next
+  translation: "Scroll right"
+- id: dynamic_projects_scroll_progress
+  translation: "Scroll progress"
 
 - id: proj_dcat_title
   translation: "DCAT-AP-ES"

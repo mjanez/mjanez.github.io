@@ -81,3 +81,13 @@
 .dark .timeline-line::before {
   background: #334155;
 }
+
+/* Hide scrollbars on horizontal carousels */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

@@ -4,6 +4,10 @@ resources/_gen/
 .DS_Store
 .hugo_build.lock
 
+# Environment variables
+.env.local
+.env
+
 # Project config
 .github/*
 !.github/workflows/
