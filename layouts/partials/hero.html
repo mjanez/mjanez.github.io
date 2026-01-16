@@ -37,7 +37,20 @@
       <div class="surface-glass rounded-2xl p-4 md:p-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
         {{ range .Site.Params.hero_stats }}
         <div class="text-center sm:text-left">
-          <p class="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white">{{ T .value_key }}</p>
+          {{ if eq .value_key "hero_stat_years_value" }}
+            <p class="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white" aria-label="{{ T "hero_stat_years_value" }}">
+              <span>{{ T "hero_stat_years_prefix" }}</span>
+              <span
+                class="countup-value"
+                data-countup
+                data-count-start="{{ T "hero_stat_years_start" }}"
+                data-count-end="{{ T "hero_stat_years_number" }}"
+              >{{ T "hero_stat_years_start" }}</span>
+              <span class="ml-1">{{ T "hero_stat_years_suffix" }}</span>
+            </p>
+          {{ else }}
+            <p class="text-2xl sm:text-3xl font-semibold text-slate-900 dark:text-white">{{ T .value_key }}</p>
+          {{ end }}
           <p class="text-[0.7rem] text-slate-500 uppercase tracking-wide leading-snug">{{ T .label_key }}</p>
         </div>
         {{ end }}

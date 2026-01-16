@@ -42,6 +42,14 @@
   translation: "Experiencia"
 - id: hero_stat_years_value
   translation: "+9 años"
+- id: hero_stat_years_prefix
+  translation: "+"
+- id: hero_stat_years_start
+  translation: "0"
+- id: hero_stat_years_number
+  translation: "9"
+- id: hero_stat_years_suffix
+  translation: "años"
 - id: hero_stat_data_value
   translation: "DATA"
 - id: hero_stat_data_label
@@ -396,3 +404,25 @@
   translation: "WebGIS"
 - id: tag_exp_cotesa_3
   translation: "ETL y Automatización"
+
+# AI Chat Widget
+- id: chat_title
+  translation: "Asistente IA"
+- id: chat_subtitle
+  translation: "Powered by Gemini"
+- id: chat_subtitle_local
+  translation: "Powered by Gemini (Local)"
+- id: chat_welcome
+  translation: "¡Hola! Soy el asistente virtual. He leído toda la experiencia y proyectos. ¿Qué te gustaría saber?"
+- id: chat_input_placeholder
+  translation: "Pregunta sobre mi experiencia..."
+- id: chat_send_label
+  translation: "Enviar mensaje"
+- id: chat_close_label
+  translation: "Cerrar chat"
+- id: chat_api_key_missing
+  translation: "⚠️ API Key no configurada. Sigue las instrucciones en el README para configurar HUGO_GEMINI_API_KEY."
+- id: chat_error_message
+  translation: "❌ Error al conectar con Gemini API. Verifica tu API key y conexión."
+- id: chat_maintenance_message
+  translation: "El asistente está en mantenimiento (migrando a servidor seguro). Intenta de nuevo más tarde."
