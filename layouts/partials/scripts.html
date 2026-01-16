@@ -210,6 +210,56 @@
 
     fitSingleLineText();
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const countupEls = Array.from(document.querySelectorAll('[data-countup]'));
+
+    const observeOnce = (elements, onEnter, options) => {
+      if (!elements.length) return;
+      if (!('IntersectionObserver' in window)) {
+        elements.forEach(onEnter);
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            onEnter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, options);
+
+      elements.forEach((el) => observer.observe(el));
+    };
+
+    const runCountup = (el) => {
+      if (!el || el.dataset.counted === 'true') return;
+      const start = Number(el.dataset.countStart);
+      const end = Number(el.dataset.countEnd);
+      if (!Number.isFinite(start) || !Number.isFinite(end) || end < start) return;
+      el.dataset.counted = 'true';
+
+      if (prefersReducedMotion || start === end) {
+        el.textContent = String(end);
+        return;
+      }
+
+      const duration = 3000;
+      const startTime = performance.now();
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+      const step = (now) => {
+        const progress = Math.min(1, (now - startTime) / duration);
+        const value = Math.round(start + (end - start) * easeOut(progress));
+        el.textContent = String(value);
+        if (progress < 1) requestAnimationFrame(step);
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    observeOnce(countupEls, runCountup, { threshold: 0.6 });
+
     const ensureLucide = (attempt = 0) => {
       if (window.lucide?.createIcons) {
         window.lucide.createIcons();
