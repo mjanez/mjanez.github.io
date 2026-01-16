@@ -69,7 +69,7 @@
         <div class="absolute bottom-0 inset-x-0 p-4 flex items-center justify-between">
           {{ if gt (len $experience) 0 }}
             {{ with index $experience 0 }}
-              <span class="block px-3 py-1 text-xs rounded-full bg-primary/20 text-white border border-white/10 truncate">{{ T $roleBadgeKey }} @ {{ .company }}</span>
+              <span class="block px-3 py-1 text-xs rounded-full bg-primary/20 text-white border border-white/10 truncate">{{ T $roleBadgeKey }} <a href="{{ .company_url }}" class="text-primary hover:underline text-white" target="_blank" rel="noopener">@{{ .company }}</a></span>
             {{ end }}
           {{ else }}
             <span class="block px-3 py-1 text-xs rounded-full bg-primary/20 text-white border border-white/10 truncate">{{ T $roleBadgeKey }}</span>
