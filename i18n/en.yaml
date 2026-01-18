@@ -89,7 +89,7 @@
 - id: exp_tragsatec_role
   translation: "GIS & Open Data Analyst"
 - id: exp_tragsatec_desc
-  translation: "Delivery of CKAN infrastructures, WebGIS (React/Node), and OGC services for Spanish General State Administration bodies. INSPIRE and Linked Data implementation."
+  translation: "Delivery of data infrastructures, WebGIS (React/Node), data governance and OGC services for Spanish General State Administration bodies. INSPIRE and Linked Data implementation."
 
 # Experience - Universidad de Zaragoza (TRAFAIR)
 - id: exp_trafair_period

@@ -89,7 +89,7 @@
 - id: exp_tragsatec_role
   translation: "Analista GIS & Open Data"
 - id: exp_tragsatec_desc
-  translation: "Entrega de infraestructuras CKAN, WebGIS (React/Node) y servicios OGC para organismos de la AGE. Implementación de INSPIRE y Linked Data."
+  translation: "Entrega de infraestructuras de datos, WebGIS (React/Node), gobierno del dato y servicios OGC para organismos de la AGE. Implementación de INSPIRE y Linked Data."
 
 # Experiencia - Universidad de Zaragoza (TRAFAIR)
 - id: exp_trafair_period
