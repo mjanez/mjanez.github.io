@@ -208,7 +208,17 @@
       });
     };
 
-    fitSingleLineText();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        fitSingleLineText();
+      });
+    } else {
+      window.addEventListener('load', fitSingleLineText);
+    }
+
+    if (document.readyState === 'complete') {
+      fitSingleLineText();
+    }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const countupEls = Array.from(document.querySelectorAll('[data-countup]'));
