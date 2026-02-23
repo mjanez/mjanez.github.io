@@ -22,7 +22,7 @@ projects:
     desc_key: "proj_ckan_desc"
     repo: "https://github.com/mjanez/ckan-docker"
     icon: "container"
-    gradient: "from-cyan-500 to-blue-500"
+    gradient: "from-indigo-500 to-cyan-500"
     tags:
       - "tag_ckan"
       - "tag_docker"
@@ -41,12 +41,27 @@ projects:
         url: "https://iepnb.gob.es/catalogo"
         label_key: "proj_ckan_case_iepnb"
 
+  - id: "portaljs-starter-omd"
+    title_key: "proj_portaljsomd_title"
+    desc_key: "proj_portaljsomd_desc"
+    repo: "https://github.com/mjanez/portaljs-starter-omd"
+    icon: "network"
+    gradient: "from-cyan-500 to-emerald-500"
+    tags:
+      - "tag_data_governance"
+      - "tag_portaljs"
+      - "tag_openmetadata"
+    cases:
+      - icon: "package"
+        url: "https://github.com/mjanez/portaljs-starter-omd/pkgs/container/portaljs-starter-omd"
+        label_key: "proj_portaljsomd_case_package"
+
   - id: "shacl-validator"
     title_key: "proj_shacl_title"
     desc_key: "proj_shacl_desc"
     repo: "https://github.com/mjanez/shacl-validator"
     icon: "check-circle-2"
-    gradient: "from-emerald-500 to-teal-500"
+    gradient: "from-emerald-400 to-pink-500"
     tags:
       - "tag_validation"
       - "tag_shacl"
@@ -56,27 +71,12 @@ projects:
         url: "https://mjanez.github.io/shacl-validator/"
         label_key: "proj_shacl_case_live"
 
-  - id: "spain-cultural-pulse"
-    title_key: "proj_pulse_title"
-    desc_key: "proj_pulse_desc"
-    repo: "https://github.com/mjanez/spain-cultural-pulse"
-    icon: "bar-chart-3"
-    gradient: "from-amber-400 to-pink-500"
-    tags:
-      - "tag_viz"
-      - "tag_data_politics"
-      - "tag_react"
-    cases:
-      - icon: "bar-chart-2"
-        url: "https://mjanez.github.io/spain-cultural-pulse/"
-        label_key: "proj_pulse_case_live"
-
   - id: "metadata-quality"
     title_key: "proj_metadata_quality_title"
     desc_key: "proj_metadata_quality_desc"
     repo: "https://github.com/mjanez/metadata-quality-react"
     icon: "shield-check"
-    gradient: "from-violet-500 to-sky-500"
+    gradient: "from-pink-500 to-violet-500"
     tags:
       - "tag_validation"
       - "tag_mqa"
@@ -91,7 +91,7 @@ projects:
     desc_key: "proj_sparql_desc"
     repo: "https://github.com/mjanez/sparql-naturalizer"
     icon: "bot"
-    gradient: "from-indigo-500 to-violet-500"
+    gradient: "from-violet-500 to-indigo-500"
     tags:
       - "tag_ai"
       - "tag_sparql"
