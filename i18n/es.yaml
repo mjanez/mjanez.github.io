@@ -22,15 +22,15 @@
 - id: hero_avatar_alt
   translation: "Retrato de Manuel Jáñez"
 - id: hero_role
-  translation: "Experto en Datos & GIS | CKAN | Gobernanza e Interoperabilidad de Datos"
+  translation: "Experto en Datos & GIS | CKAN | Gobierno e Interoperabilidad de datos"
 - id: hero_role_badge
-  translation: "Experto en Datos & GIS"
+  translation: "Data & AI Sr Specialist"
 - id: hero_description
   translation: "Especialista en interoperabilidad técnica y semántica, infraestructuras de datos y sistemas geoespaciales. Transformo datos complejos en soluciones estándar, accesibles y valiosas."
 - id: hero_status_label
   translation: "Enfoque actual"
 - id: hero_status_value
-  translation: "Consultor Experto en Datos @ NEORIS"
+  translation: "Data & AI Sr Specialist @ Telefónica Tech"
 - id: hero_cta_projects
   translation: "Proyectos"
 - id: hero_cta_github
@@ -53,7 +53,7 @@
 - id: hero_stat_data_value
   translation: "DATA"
 - id: hero_stat_data_label
-  translation: "Gobernanza e interoperabilidad"
+  translation: "Gobierno e interoperabilidad"
 - id: hero_stat_gis_value
   translation: "GIS"
 - id: hero_stat_gis_label
@@ -67,17 +67,25 @@
 - id: exp_current_badge
   translation: "Actual"
 
+# Experiencia - Telefonica Tech
+- id: exp_telefonica_period
+  translation: "Feb 2026 — Actualidad"
+- id: exp_telefonica_role
+  translation: "Data & AI Senior Specialist"
+- id: exp_telefonica_desc
+  translation: "Consultoría estratégica y funcional para la adopción de modelos de Gobierno del Dato y ecosistemas federados. Iniciativas estratégicas Data & AI."
+
 # Experiencia - NEORIS
 - id: exp_neoris_period
-  translation: "Nov 2024 — Actualidad"
+  translation: "Nov 2024 — Feb 2026"
 - id: exp_neoris_role
   translation: "Consultor Experto en Datos"
 - id: exp_neoris_desc
-  translation: "Consultoría técnica en gobernanza de datos, arquitectura y plataformas semánticas. Puente entre estrategia normativa e implementación."
+  translation: "Consultoría técnica en gobierno del dato, arquitectura y plataformas semánticas. Puente entre estrategia normativa e implementación."
 
 # Experiencia - datos.gob.es (Red.es)
 - id: exp_datosgobes_period
-  translation: "Nov 2024 — Actualidad"
+  translation: "Nov 2024 — Feb 2026"
 - id: exp_datosgobes_role
   translation: "Experto Senior en Datos"
 - id: exp_datosgobes_desc
@@ -170,10 +178,10 @@
   translation: "SHACL Validator"
 - id: proj_shacl_desc
   translation: "Aplicación web para validar catálogos RDF frente a perfiles de aplicación. Crítico para la calidad de datos."
-- id: proj_pulse_title
-  translation: "Spain Cultural Pulse"
-- id: proj_pulse_desc
-  translation: "Visualización de datos sobre valores, política y normas sociales en España."
+- id: proj_portaljsomd_title
+  translation: "Portal.js Starter OpenMetadata"
+- id: proj_portaljsomd_desc
+  translation: "Despliegue basado en Docker de plantilla del framework PortalJS para OpenMetadata."
 - id: proj_metadata_quality_title
   translation: "Metadata Quality (MQA)"
 - id: proj_metadata_quality_desc
@@ -192,8 +200,8 @@
   translation: "Catálogo de datos abiertos de la BNE"
 - id: proj_ckan_case_iepnb
   translation: "Catálogo del Inventario Español de Patrimonio Natural y Biodiversidad"
-- id: proj_pulse_case_live
-  translation: "Dashboard en vivo de Spain Cultural Pulse"
+- id: proj_portaljsomd_case_package
+  translation: "Imagen de contenedor Portal.js Starter OMD"
 - id: proj_metadata_case_demo
   translation: "Demo en vivo de Metadata Quality"
 - id: proj_sparql_title
@@ -351,6 +359,12 @@
   translation: "Portal de datos"
 - id: tag_validation
   translation: "Validación"
+- id: tag_data_governance
+  translation: "Gobierno del dato"
+- id: tag_portaljs
+  translation: "Portal.js"
+- id: tag_openmetadata
+  translation: "OMD"
 - id: tag_rdf
   translation: "RDF"
 - id: tag_viz
@@ -373,6 +387,13 @@
   translation: "SHACL"
 - id: tag_mqa
   translation: "MQA"
+
+- id: tag_exp_telefonica_1
+  translation: "Gobierno del Dato"
+- id: tag_exp_telefonica_2
+  translation: "Ecosistemas federados"
+- id: tag_exp_telefonica_3
+  translation: "Estrategia de datos"
 
 - id: tag_exp_neoris_1
   translation: "Estrategia de datos"

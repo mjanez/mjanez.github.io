@@ -61,7 +61,7 @@ author = "Manuel Jáñez"
     languageName = 'Español'
     weight = 2
     [languages.es.params]
-      description = "mjanez.dev - Experto en datos y GIS | CKAN | Gobernanza de datos e interoperabilidad"
+      description = "mjanez.dev - Experto en datos y GIS | CKAN | Gobierno e interoperabilidad de datos"
 
 [markup]
   [markup.goldmark.renderer]
