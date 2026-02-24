@@ -97,7 +97,7 @@
 - id: exp_tragsatec_role
   translation: "Data Platform Engineer / Tech Lead"
 - id: exp_tragsatec_desc
-  translation: "Delivery of data infrastructures, WebGIS solutions, and OGC services for Spanish General State Administration bodies. Implementation of INSPIRE and Linked Data."
+  translation: "Delivery of data infrastructures, WebGIS solutions, data governance and OGC services for Spanish General State Administration bodies. Implementation of INSPIRE and Linked Data."
 
 # Experience - Universidad de Zaragoza (TRAFAIR)
 - id: exp_trafair_period
