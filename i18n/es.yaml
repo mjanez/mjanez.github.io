@@ -73,13 +73,13 @@
 - id: exp_telefonica_role
   translation: "Data & AI Senior Specialist"
 - id: exp_telefonica_desc
-  translation: "Consultoría estratégica y funcional para la adopción de modelos de Gobierno del Dato y ecosistemas federados. Iniciativas estratégicas Data & AI."
+  translation: "Consultoría para la adopción de modelos de Gobierno del Dato y ecosistemas federados. Iniciativas estratégicas Data & AI."
 
 # Experiencia - NEORIS
 - id: exp_neoris_period
   translation: "Nov 2024 — Feb 2026"
 - id: exp_neoris_role
-  translation: "Consultor Experto en Datos"
+  translation: "Data Experienced Consultant"
 - id: exp_neoris_desc
   translation: "Consultoría técnica en gobierno del dato, arquitectura y plataformas semánticas. Puente entre estrategia normativa e implementación."
 
@@ -89,15 +89,15 @@
 - id: exp_datosgobes_role
   translation: "Experto Senior en Datos"
 - id: exp_datosgobes_desc
-  translation: "Coordinación técnica del Catálogo Nacional de datos. Evolución e implementación de DCAT-AP-ES y NTI-RISP."
+  translation: "Coordinación técnica del Catálogo Nacional de datos. Desarrollo, mantenimiento e implementación de DCAT-AP-ES, NTI-RISP y Data Act."
 
 # Experiencia - Tragsatec
 - id: exp_tragsatec_period
   translation: "Nov 2020 — Feb 2025"
 - id: exp_tragsatec_role
-  translation: "Analista GIS & Open Data"
+  translation: "Líder técnico | Analista GIS & Open Data"
 - id: exp_tragsatec_desc
-  translation: "Entrega de infraestructuras de datos, WebGIS (React/Node), gobierno del dato y servicios OGC para organismos de la AGE. Implementación de INSPIRE y Linked Data."
+  translation: "Entrega de infraestructuras de datos, soluciones WebGIS, gobierno del dato y servicios OGC para organismos de la AGE. Implementación de INSPIRE y Linked Data."
 
 # Experiencia - Universidad de Zaragoza (TRAFAIR)
 - id: exp_trafair_period
@@ -105,15 +105,15 @@
 - id: exp_trafair_role
   translation: "Investigador TIC"
 - id: exp_trafair_desc
-  translation: "Procesos ETL y servicios predictivos para calidad del aire en el proyecto europeo TRAFAIR, publicando datos abiertos en CKAN y paneles ciudadanos."
+  translation: "Procesos ETL y servicios predictivos para calidad del aire en el proyecto europeo TRAFAIR, publicación de datos abiertos y paneles ciudadanos."
 
 # Experiencia - COTESA
 - id: exp_cotesa_period
   translation: "Ago 2016 — Ago 2019"
 - id: exp_cotesa_role
-  translation: "Consultor de Sistemas de Información Geográfica"
+  translation: "Consultor de Datos Espaciales"
 - id: exp_cotesa_desc
-  translation: "Consultoría geoespacial para movilidad e infraestructuras, creando flujos ETL y soluciones web mapping basadas en estándares OGC."
+  translation: "Consultoría geoespacial para movilidad e infraestructuras, implementando flujos ETL y soluciones web mapping basadas en estándares OGC."
 
 - id: location_madrid
   translation: "Madrid, España"
