@@ -73,7 +73,7 @@
 - id: exp_telefonica_role
   translation: "Data & AI Senior Specialist"
 - id: exp_telefonica_desc
-  translation: "Strategic and functional consulting for data governance models and federated data ecosystems adoption. Data & AI strategic initiatives."
+  translation: "Consulting for data governance models and federated data ecosystems adoption. Data & AI strategic initiatives."
 
 # Experience - NEORIS
 - id: exp_neoris_period
@@ -89,21 +89,21 @@
 - id: exp_datosgobes_role
   translation: "Senior Data Expert"
 - id: exp_datosgobes_desc
-  translation: "Technical coordination of the National Open Data Catalog. Evolution and implementation of DCAT-AP-ES and NTI-RISP."
+  translation: "Technical coordination of the National Data Catalog. Development, maintenance, and implementation of DCAT-AP-ES, NTI-RISP, and the Data Act."
 
 # Experience - Tragsatec
 - id: exp_tragsatec_period
   translation: "Nov 2020 — Feb 2025"
 - id: exp_tragsatec_role
-  translation: "GIS & Open Data Analyst"
+  translation: "Data Platform Engineer / Tech Lead"
 - id: exp_tragsatec_desc
-  translation: "Delivery of CKAN infrastructures, WebGIS (React/Node), and OGC services for Spanish General State Administration bodies. INSPIRE and Linked Data implementation."
+  translation: "Delivery of data infrastructures, WebGIS solutions, and OGC services for Spanish General State Administration bodies. Implementation of INSPIRE and Linked Data."
 
 # Experience - Universidad de Zaragoza (TRAFAIR)
 - id: exp_trafair_period
   translation: "Feb 2020 — Nov 2020"
 - id: exp_trafair_role
-  translation: "ICT Researcher"
+  translation: "Data Researcher"
 - id: exp_trafair_desc
   translation: "Built ETL pipelines and predictive services for urban air-quality in the TRAFAIR EU project, publishing data via CKAN and citizen dashboards."
 
@@ -111,7 +111,7 @@
 - id: exp_cotesa_period
   translation: "Aug 2016 — Aug 2019"
 - id: exp_cotesa_role
-  translation: "GIS Systems Consultant"
+  translation: "Geospatial Data Consultant"
 - id: exp_cotesa_desc
   translation: "Delivered geospatial consulting for mobility and infrastructure programs, crafting ETL workflows and OGC-compliant web mapping solutions."
 
