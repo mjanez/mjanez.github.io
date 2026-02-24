@@ -73,7 +73,7 @@
 - id: exp_telefonica_role
   translation: "Data & AI Senior Specialist"
 - id: exp_telefonica_desc
-  translation: "Consulting for data governance models and federated data ecosystems adoption. Data & AI strategic initiatives."
+  translation: "Consulting for the adoption of data governance models and federated/sovereign data ecosystems. Data & AI strategic initiatives."
 
 # Experience - NEORIS
 - id: exp_neoris_period
