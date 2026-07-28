@@ -4,13 +4,14 @@
   "description": "Hugo + Tailwind CSS portfolio for mjanez",
   "scripts": {
     "dev": "hugo server --disableFastRender --bind 0.0.0.0",
-    "build": "hugo --gc --minify",
+    "build:css": "mkdir -p ./static/css && npx tailwindcss -i ./assets/css/main.css -o ./static/css/main.css --minify",
+    "build": "npm run build:css && hugo --gc --minify",
     "preview": "npm run build && npx serve public"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.35",
-    "postcss-cli": "^11.0.0",
-    "tailwindcss": "^3.4.1"
+    "autoprefixer": "^10.5.4",
+    "postcss": "^8.5.24",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^3.4.19"
   }
 }
