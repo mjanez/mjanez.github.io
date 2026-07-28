@@ -49,7 +49,7 @@
 - id: hero_stat_years_number
   translation: "10"
 - id: hero_stat_years_suffix
-  translation: "years"
+  translation: "yrs"
 - id: hero_stat_data_value
   translation: "DATA"
 - id: hero_stat_data_label
