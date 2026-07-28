@@ -41,7 +41,7 @@
 - id: hero_stat_years_label
   translation: "Experience"
 - id: hero_stat_years_value
-  translation: "+10 years"
+  translation: "+10 yrs"
 - id: hero_stat_years_prefix
   translation: "+"
 - id: hero_stat_years_start
