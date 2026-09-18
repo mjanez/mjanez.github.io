@@ -30,7 +30,7 @@
 - id: hero_status_label
   translation: "Enfoque actual"
 - id: hero_status_value
-  translation: "Data & AI Sr Specialist @ Telefónica Tech"
+  translation: "Data & AI Sr Specialist @ Telefónica"
 - id: hero_cta_projects
   translation: "Proyectos"
 - id: hero_cta_github
@@ -67,7 +67,7 @@
 - id: exp_current_badge
   translation: "Actual"
 
-# Experiencia - Telefonica Tech
+# Experiencia - Telefónica
 - id: exp_telefonica_period
   translation: "Feb 2026 — Actualidad"
 - id: exp_telefonica_role

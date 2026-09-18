@@ -1,6 +1,6 @@
 - id: "telefonica"
-  company: "Telefonica Tech"
-  company_url: "https://www.linkedin.com/company/telefonicatech/"
+  company: "Telefónica"
+  company_url: "https://www.linkedin.com/company/telefonica/"
   location_key: "location_madrid"
   accent: "from-cyan-400 via-blue-500 to-blue-600"
   accent_color: "#4061fa"
