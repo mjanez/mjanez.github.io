@@ -1,7 +1,6 @@
 categories:
   - title_key: "stack_cat_gis"
     subtitle_key: "stack_cat_gis_subtitle"
-    accent: "#06b6d4"
     icon: "globe-2"
     items:
       - "stack_item_spatial_datastores"
@@ -11,7 +10,6 @@ categories:
 
   - title_key: "stack_cat_open"
     subtitle_key: "stack_cat_open_subtitle"
-    accent: "#f59e0b"
     icon: "folder-cog"
     items:
       - "stack_item_semantic_quality"
@@ -21,7 +19,6 @@ categories:
 
   - title_key: "stack_cat_web"
     subtitle_key: "stack_cat_web_subtitle"
-    accent: "#a855f7"
     icon: "code"
     items:
       - "stack_item_backend_python"
@@ -31,7 +28,6 @@ categories:
 
   - title_key: "stack_cat_infra"
     subtitle_key: "stack_cat_infra_subtitle"
-    accent: "#22c55e"
     icon: "server-cog"
     items:
       - "stack_item_containers_orchestration"

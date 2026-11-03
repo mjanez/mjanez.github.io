@@ -2,8 +2,7 @@
   company: "Telefónica"
   company_url: "https://www.linkedin.com/company/telefonica/"
   location_key: "location_madrid"
-  accent: "from-cyan-400 via-blue-500 to-blue-600"
-  accent_color: "#4061fa"
+  start: "2026-02"
   current: true
   tags:
     - "tag_exp_telefonica_1"
@@ -14,8 +13,8 @@
   company: "EPAM NEORIS"
   company_url: "https://www.linkedin.com/company/neoris/"
   location_key: "location_madrid"
-  accent: "from-cyan-500 via-sky-400 to-blue-500"
-  accent_color: "#06b6d4"
+  start: "2024-11"
+  end: "2026-02"
   tags:
     - "tag_exp_neoris_1"
     - "tag_exp_neoris_2"
@@ -25,8 +24,8 @@
   company: "datos.gob.es"
   company_url: "https://www.linkedin.com/company/datos-gob-es/"
   location_key: "location_madrid"
-  accent: "from-blue-500 via-indigo-500 to-purple-500"
-  accent_color: "#3b82f6"
+  start: "2024-11"
+  end: "2026-02"
   tags:
     - "tag_exp_datosgobes_1"
     - "tag_exp_datosgobes_2"
@@ -36,8 +35,8 @@
   company: "Tragsatec"
   company_url: "https://www.linkedin.com/company/tragsatec/"
   location_key: "location_madrid"
-  accent: "from-emerald-500 via-teal-500 to-cyan-500"
-  accent_color: "#10b981"
+  start: "2020-11"
+  end: "2025-02"
   tags:
     - "tag_exp_tragsatec_1"
     - "tag_exp_tragsatec_2"
@@ -47,8 +46,8 @@
   company: "Universidad de Zaragoza"
   company_url: "https://www.linkedin.com/school/universidad-de-zaragoza/"
   location_key: "location_zaragoza"
-  accent: "from-indigo-500 via-purple-500 to-pink-500"
-  accent_color: "#6366f1"
+  start: "2020-02"
+  end: "2020-11"
   tags:
     - "tag_exp_trafair_1"
     - "tag_exp_trafair_2"
@@ -58,8 +57,8 @@
   company: "Centro de Observación y Teledetección Espacial (COTESA)"
   company_url: "https://www.linkedin.com/company/cotesa/"
   location_key: "location_valladolid"
-  accent: "from-amber-500 via-orange-500 to-rose-500"
-  accent_color: "#f97316"
+  start: "2016-08"
+  end: "2019-08"
   tags:
     - "tag_exp_cotesa_1"
     - "tag_exp_cotesa_2"
