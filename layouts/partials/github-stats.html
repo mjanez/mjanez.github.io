@@ -1,46 +1,181 @@
-<section id="github" class="py-12">
-  <div class="max-w-6xl mx-auto px-4 space-y-6">
-    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+<section id="github" data-nav="projects" class="py-20 md:py-24">
+  <div class="max-w-6xl mx-auto px-6 space-y-12">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
       <div class="space-y-3">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/40 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          <span class="text-xs font-mono uppercase tracking-[0.2em]">{{ T "github_stats_live" }}</span>
-        </div>
-        <div class="flex items-center gap-3 text-slate-900 dark:text-white">
-          <i data-lucide="activity" class="text-primary"></i>
-          <h2 class="text-3xl font-bold">{{ T "github_stats_title" }}</h2>
-        </div>
-        <p class="text-slate-600 dark:text-slate-400 max-w-3xl">{{ T "github_stats_subtitle" }}</p>
+        <h2 class="section-title">{{ T "github_stats_title" }}</h2>
+        <p class="text-ink-2 max-w-2xl">{{ T "github_stats_subtitle" }}</p>
       </div>
-      <a href="{{ .Site.Params.links.github }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl surface-glass text-sm font-semibold text-slate-900 dark:text-white hover:-translate-y-1 transition-transform">
-        <i data-lucide="github" class="w-5 h-5"></i>
+      <a href="{{ .Site.Params.links.github }}" class="btn btn-secondary self-start md:self-auto">
+        <i data-lucide="github" class="w-4 h-4"></i>
         <span>{{ T "github_stats_view_profile" }}</span>
         <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
       </a>
     </div>
 
-    <div class="flex flex-col md:flex-row md:items-start gap-4 md:gap-5 md:justify-center">
-      <article class="surface-glass rounded-2xl border border-slate-100 dark:border-dark-border overflow-hidden shadow-[0_18px_56px_-26px_rgba(6,182,212,0.45)] w-full md:w-auto">
-        <img
-          data-theme-img
-          data-src-light="https://github-readme-stats-dusky-ten-36.vercel.app/api?username=mjanez&show_icons=true&title_color=0f172a&border_color=00000000&text_color=475569&icon_color=06b6d4&bg_color=00000000&hide=stars&show=prs_merged_percentage"
-          data-src-dark="https://github-readme-stats-dusky-ten-36.vercel.app/api?username=mjanez&show_icons=true&title_color=c8e7ff&border_color=00000000&text_color=dbeafe&icon_color=06b6d4&bg_color=00000000&hide=stars&show=prs_merged_percentage"
-          src="https://github-readme-stats-dusky-ten-36.vercel.app/api?username=mjanez&show_icons=true&title_color=0f172a&text_color=0f172a&border_color=00000000&icon_color=06b6d4&bg_color=00000000&hide=stars&show=prs_merged_percentage"
-          alt="{{ T "github_stats_overview_alt" }}"
-          class="w-full max-w-[420px] md:max-w-[360px] md:min-h-[196px]"
-          loading="lazy">
-      </article>
+    <div data-gh-stats data-more="{{ T "github_stats_more" }}" class="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6">
+        <article class="flex min-h-[9rem] items-center justify-center rounded-xl border border-line bg-surface p-3 lg:p-4">
+          <img
+            data-theme-img
+            data-src-light="https://github-readme-stats-dusky-ten-36.vercel.app/api?username=mjanez&amp;show_icons=true&amp;locale={{ .Site.Language.Lang }}&amp;hide=stars&amp;show=prs_merged_percentage&amp;card_width=500&amp;border_color=00000000&amp;bg_color=00000000&amp;title_color=111827&amp;text_color=4b5565&amp;icon_color=0e7490&amp;ring_color=0e7490"
+            data-src-dark="https://github-readme-stats-dusky-ten-36.vercel.app/api?username=mjanez&amp;show_icons=true&amp;locale={{ .Site.Language.Lang }}&amp;hide=stars&amp;show=prs_merged_percentage&amp;card_width=500&amp;border_color=00000000&amp;bg_color=00000000&amp;title_color=eef0f5&amp;text_color=a3a9b8&amp;icon_color=06b6d4&amp;ring_color=06b6d4"
+            src="https://github-readme-stats-dusky-ten-36.vercel.app/api?username=mjanez&amp;show_icons=true&amp;locale={{ .Site.Language.Lang }}&amp;hide=stars&amp;show=prs_merged_percentage&amp;card_width=500&amp;border_color=00000000&amp;bg_color=00000000&amp;title_color=111827&amp;text_color=4b5565&amp;icon_color=0e7490&amp;ring_color=0e7490"
+            alt="{{ T "github_stats_overview_alt" }}"
+            class="h-auto w-full max-w-[440px]"
+            loading="lazy">
+        </article>
 
-      <article class="surface-glass rounded-2xl border border-slate-100 dark:border-dark-border overflow-hidden shadow-[0_18px_56px_-26px_rgba(6,182,212,0.45)] w-full md:w-auto">
-        <img
-          data-theme-img
-          data-src-light="https://github-readme-stats-dusky-ten-36.vercel.app/api/top-langs/?username=mjanez&layout=compact&border_color=00000000&title_color=0f172a&text_color=0f172a&icon_color=06b6d4&bg_color=00000000&rank_icon=percentile&langs_count=6"
-          data-src-dark="https://github-readme-stats-dusky-ten-36.vercel.app/api/top-langs/?username=mjanez&layout=compact&border_color=00000000&title_color=c8e7ff&text_color=dbeafe&icon_color=06b6d4&bg_color=00000000&rank_icon=percentile&langs_count=6"
-          src="https://github-readme-stats-dusky-ten-36.vercel.app/api/top-langs/?username=mjanez&layout=compact&title_color=0f172a&border_color=00000000&&text_color=0f172a&icon_color=06b6d4&bg_color=00000000&rank_icon=percentile&langs_count=6"
-          alt="{{ T "github_stats_langs_alt" }}"
-          class="w-full max-w-[420px] md:max-w-[360px] md:min-h-[196px]"
-          loading="lazy">
-      </article>
+      <div data-tile="forks" class="flex flex-col gap-5 rounded-xl border border-line bg-surface p-5 lg:p-6">
+        <div class="flex gap-8 shrink-0">
+          <div>
+            <p data-gh="forks" class="text-3xl font-medium tabular text-accent-ink">&mdash;</p>
+            <p class="mt-1 text-sm text-ink-2">{{ T "github_stats_forks" }}</p>
+          </div>
+          <div>
+            <p data-gh="prs" class="text-3xl font-medium tabular text-ink">&mdash;</p>
+            <p class="mt-1 text-sm text-ink-2">{{ T "github_stats_prs" }}</p>
+          </div>
+        </div>
+        <div data-gh="fork-list" class="flex flex-wrap content-start gap-2">
+          <span class="text-sm text-ink-3">{{ T "dynamic_projects_loading" }}</span>
+        </div>
+      </div>
+
+      <div data-tile="langs" class="sm:col-span-2 space-y-5 rounded-xl border border-line bg-surface p-6 lg:p-8">
+        <p class="text-base font-medium text-ink">{{ T "github_stats_languages" }}</p>
+        <div data-gh="lang-bar" class="flex h-2.5 gap-0.5 overflow-hidden rounded-full bg-raised"></div>
+        <ul data-gh="lang-legend" class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-3 text-sm">
+          <li class="text-ink-3">{{ T "dynamic_projects_loading" }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  window.githubRepos = fetch('https://api.github.com/users/{{ .Site.Params.github.username }}/repos?sort=updated&per_page=100&type=public')
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status);
+      return response.json();
+    });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const root = document.querySelector('[data-gh-stats]');
+    const field = (name) => root.querySelector(`[data-gh="${name}"]`);
+    const lang = document.documentElement.lang;
+    const integer = new Intl.NumberFormat(lang, { maximumFractionDigits: 0 });
+    const share = new Intl.NumberFormat(lang, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    const profile = '{{ .Site.Params.links.github }}';
+    const user = '{{ .Site.Params.github.username }}';
+    const FORKS_SHOWN = 6;
+    const LANG_STEPS = ['bg-accent', 'bg-ink/80', 'bg-ink/60', 'bg-ink/45', 'bg-ink/30', 'bg-ink/20'];
+
+    const motion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (motion) root.setAttribute('data-animate', '');
+
+    const whenVisible = (el) => new Promise((resolve) => {
+      if (!motion || !('IntersectionObserver' in window)) return resolve();
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          resolve();
+        }
+      }, { threshold: 0.35 });
+      observer.observe(el);
+    });
+
+    const countUp = (el, end, format, duration = 1000) => {
+      if (!motion) {
+        el.textContent = format(end);
+        return;
+      }
+      const start = performance.now();
+      const step = (now) => {
+        const progress = Math.min(1, (now - start) / duration);
+        el.textContent = format(end * (1 - Math.pow(1 - progress, 3)));
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const reveal = (items) => items.forEach((item) => item.classList.add('is-in'));
+    const forksSeen = whenVisible(root.querySelector('[data-tile="forks"]'));
+    const langsSeen = whenVisible(root.querySelector('[data-tile="langs"]'));
+
+    const prs = fetch('https://api.github.com/search/issues?q=author:' + user + '+is:pr+is:merged+-user:' + user + '&per_page=1')
+      .then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
+      .then((result) => result.total_count);
+    Promise.all([prs, forksSeen])
+      .then(([total]) => countUp(field('prs'), total, (v) => integer.format(Math.round(v))))
+      .catch(() => {});
+
+    window.githubRepos
+      .then((all) => {
+        const counts = new Map();
+        all
+          .filter((repo) => repo.language && !repo.archived && !repo.disabled)
+          .forEach((repo) => counts.set(repo.language, (counts.get(repo.language) || 0) + 1));
+        const top = Array.from(counts.entries()).sort((a, b) => b[1] - a[1]).slice(0, LANG_STEPS.length);
+        const total = top.reduce((sum, [, count]) => sum + count, 0);
+        if (total > 0) {
+          field('lang-bar').replaceChildren(...top.map(([name, count], i) => {
+            const segment = document.createElement('span');
+            segment.className = LANG_STEPS[i];
+            segment.style.flex = `${count / total} 1 0%`;
+            segment.title = name;
+            return segment;
+          }));
+          const values = [];
+          const items = top.map(([name, count], i) => {
+            const item = document.createElement('li');
+            item.className = 'reveal flex items-center gap-2';
+            item.style.setProperty('--i', i);
+            const dot = document.createElement('span');
+            dot.className = `h-2 w-2 shrink-0 rounded-full ${LANG_STEPS[i]}`;
+            const label = document.createElement('span');
+            label.className = 'truncate text-ink';
+            label.textContent = name;
+            const value = document.createElement('span');
+            value.className = 'font-mono text-xs text-ink-3 tabular';
+            value.textContent = `${share.format(motion ? 0 : (count / total) * 100)}%`;
+            values.push([value, (count / total) * 100]);
+            item.append(dot, label, value);
+            return item;
+          });
+          field('lang-legend').replaceChildren(...items);
+          langsSeen.then(() => {
+            reveal([field('lang-bar'), ...items]);
+            values.forEach(([el, end]) => countUp(el, end, (v) => `${share.format(v)}%`, 900));
+          });
+        }
+
+        const forks = all
+          .filter((repo) => repo.fork && !repo.archived && !repo.disabled)
+          .sort((a, b) => Date.parse(b.pushed_at) - Date.parse(a.pushed_at));
+        if (forks.length === 0) throw new Error('empty');
+
+        const link = (href, text, i) => {
+          const chip = document.createElement('a');
+          chip.className = 'chip reveal';
+          chip.style.setProperty('--i', i);
+          chip.href = href;
+          chip.target = '_blank';
+          chip.rel = 'noopener noreferrer';
+          chip.textContent = text;
+          return chip;
+        };
+        const chips = forks.slice(0, FORKS_SHOWN).map((repo, i) => link(repo.html_url, repo.name, i));
+        if (forks.length > FORKS_SHOWN) {
+          chips.push(link(profile + '?tab=repositories&type=fork', `+${forks.length - FORKS_SHOWN} ${root.dataset.more}`, chips.length));
+        }
+        field('fork-list').replaceChildren(...chips);
+        forksSeen.then(() => {
+          countUp(field('forks'), forks.length, (v) => integer.format(Math.round(v)));
+          reveal(chips.map((chip, i) => { chip.style.setProperty('--i', i + 3); return chip; }));
+        });
+      })
+      .catch(() => {
+        field('fork-list').innerHTML = '<span class="text-sm text-ink-3">{{ T "github_stats_error" }}</span>';
+        field('lang-legend').innerHTML = '<li class="text-ink-3">{{ T "github_stats_error" }}</li>';
+      });
+  });
+</script>
