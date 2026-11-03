@@ -1,49 +1,35 @@
-<section id="dynamic-projects" class="py-16 scroll-mt-16">
-    <div class="max-w-6xl mx-auto px-4 space-y-8">
+<section data-nav="projects" id="dynamic-projects" class="py-20 md:py-24">
+    <div class="max-w-6xl mx-auto px-6 space-y-12">
         <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div>
-                <p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">{{ T "nav_projects" }}</p>
-                <h2 class="text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                    <i data-lucide="radar" class="text-primary"></i>
-                    <span>{{ T "more_projects" }}</span>
-                </h2>
-                <p class="text-slate-600 dark:text-slate-400 mt-2 max-w-3xl">{{ T "more_projects_desc" }}</p>
+            <div class="space-y-3">
+                <h2 class="section-title">{{ T "more_projects" }}</h2>
+                <p class="text-ink-2 max-w-2xl">{{ T "more_projects_desc" }}</p>
             </div>
-            <div class="flex gap-3 self-start md:self-end">
-                <button type="button" data-scroll-control="prev" aria-label='{{ T "dynamic_projects_scroll_prev" }}' class="h-11 w-11 rounded-xl border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 hover:bg-slate-100 dark:hover:bg-dark-border transition-all text-slate-600 dark:text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed">
-                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+            <div class="flex gap-2 self-start md:self-end">
+                <button type="button" data-scroll-control="prev" aria-label='{{ T "dynamic_projects_scroll_prev" }}' class="h-8 w-8 inline-flex items-center justify-center rounded-lg border border-line text-ink-2 transition-colors hover:bg-raised hover:text-ink disabled:opacity-30 disabled:pointer-events-none">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
                 </button>
-                <button type="button" data-scroll-control="next" aria-label='{{ T "dynamic_projects_scroll_next" }}' class="h-11 w-11 rounded-xl border border-slate-200 dark:border-dark-border bg-white/70 dark:bg-dark-card/60 hover:bg-slate-100 dark:hover:bg-dark-border transition-all text-slate-600 dark:text-slate-300 disabled:opacity-30 disabled:cursor-not-allowed">
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <button type="button" data-scroll-control="next" aria-label='{{ T "dynamic_projects_scroll_next" }}' class="h-8 w-8 inline-flex items-center justify-center rounded-lg border border-line text-ink-2 transition-colors hover:bg-raised hover:text-ink disabled:opacity-30 disabled:pointer-events-none">
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             </div>
         </div>
 
-        <div class="space-y-4">
-            <div class="flex items-center gap-3">
-                <div class="flex-1 h-1.5 rounded-full bg-slate-200 dark:bg-slate-700/70 overflow-hidden">
-                    <span data-scroll-progress role="progressbar" aria-label='{{ T "dynamic_projects_scroll_progress" }}' aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="block h-full w-0 bg-gradient-to-r from-primary to-blue-500 transition-[width] duration-300 ease-out"></span>
-                </div>
+        <div class="space-y-6">
+            <div class="h-1 rounded-full bg-raised overflow-hidden">
+                <span data-scroll-progress role="progressbar" aria-label='{{ T "dynamic_projects_scroll_progress" }}' aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" class="block h-full w-0 bg-accent"></span>
             </div>
 
-            <div class="relative">
-                <div class="relative rounded-3xl border border-slate-100 dark:border-dark-border bg-white/60 dark:bg-dark-card/70 backdrop-blur-xl px-4 py-8 overflow-hidden">
-                    <span aria-hidden="true" class="pointer-events-none absolute inset-y-6 left-0 w-20 bg-gradient-to-r from-white/95 via-white/40 to-transparent dark:from-dark-bg dark:via-dark-bg/40"></span>
-                    <span aria-hidden="true" class="pointer-events-none absolute inset-y-6 right-0 w-20 bg-gradient-to-l from-white/95 via-white/40 to-transparent dark:from-dark-bg dark:via-dark-bg/40"></span>
-
-                    <div id="github-projects-container" class="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
-                        <div class="snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] h-56 glass rounded-2xl border border-dashed border-slate-200 dark:border-slate-700 bg-slate-100/60 dark:bg-dark-card/40 animate-pulse flex items-center justify-center text-center">
-                            <div class="flex flex-col items-center gap-3 text-slate-400">
-                                <div class="w-7 h-7 border-2 border-slate-400 border-t-transparent rounded-full animate-spin"></div>
-                                <p class="text-sm">{{ T "dynamic_projects_loading" }}</p>
-                            </div>
-                        </div>
+            <div id="github-projects-container" class="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+                <div class="snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] h-56 rounded-xl border border-dashed border-line flex items-center justify-center text-center">
+                    <div class="flex flex-col items-center gap-3 text-ink-3">
+                        <div class="w-6 h-6 border-2 border-ink-3 border-t-transparent rounded-full animate-spin"></div>
+                        <p class="text-sm">{{ T "dynamic_projects_loading" }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
 
 <script>    
@@ -124,17 +110,7 @@
             }
         };
 
-        const apiUrl = 'https://api.github.com/users/'
-            + encodeURIComponent(githubUsername)
-            + '/repos?sort=updated&per_page=100&type=public';
-
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`${copy.apiError}: ${response.status}`);
-                }
-                return response.json();
-            })
+        window.githubRepos
             .then(repos => {
                 if (!Array.isArray(repos)) {
                     throw new Error(copy.invalidList);
@@ -153,7 +129,7 @@
                 });
 
                 if (filteredRepos.length === 0) {
-                    container.innerHTML = `<div class="snap-center shrink-0 w-full p-10 text-center text-slate-500 dark:text-slate-400 border border-dashed border-slate-200 dark:border-slate-700 rounded-2xl">${copy.noResults}</div>`;
+                    container.innerHTML = `<div class="snap-center shrink-0 w-full p-10 text-center text-ink-3 border border-dashed border-line rounded-xl">${copy.noResults}</div>`;
                     refreshScrollUi();
                     return;
                 }
@@ -192,40 +168,32 @@
                     const language = repo.language || copy.languageFallback;
 
                     const card = document.createElement('div');
-                    card.className = 'snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] flex flex-col glass rounded-2xl border border-slate-100 dark:border-slate-700 hover:-translate-y-1 transition-all duration-300';
+                    card.className = 'snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] flex flex-col rounded-xl border border-line bg-surface transition-colors hover:border-ink/20';
 
                     card.innerHTML = `
-                        <div class="p-6 flex flex-col h-full">
-                            <div class="flex justify-between items-start mb-4">
-                                <div class="p-2 rounded-xl ${isLive ? 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400' : 'bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-400'}">
-                                    <i data-lucide="${isLive ? 'globe' : 'git-branch'}" class="w-5 h-5"></i>
-                                </div>
-                                <div class="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400" title="${copy.forks}">
-                                    <i data-lucide="git-fork" class="w-3.5 h-3.5"></i>
+                        <div class="p-6 flex flex-col h-full gap-3">
+                            <div class="flex justify-between items-center text-ink-3">
+                                <i data-lucide="${isLive ? 'globe' : 'git-branch'}" class="w-5 h-5"></i>
+                                <div class="flex items-center gap-1 font-mono text-xs tabular" title="${copy.forks}">
+                                    <i data-lucide="git-fork" class="w-4 h-4"></i>
                                     <span>${forksCount}</span>
                                 </div>
                             </div>
 
-                            <h3 class="font-bold text-lg mb-2 text-slate-900 dark:text-slate-100 line-clamp-1" title="${repo.name}">
-                                ${repo.name}
-                            </h3>
+                            <h3 class="text-lg font-medium text-ink line-clamp-1" title="${repo.name}">${repo.name}</h3>
 
-                            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-3 flex-grow">
-                                ${repo.description || copy.noDescription}
-                            </p>
+                            <p class="text-sm leading-6 text-ink-2 line-clamp-3 flex-grow">${repo.description || copy.noDescription}</p>
 
-                            <div class="mt-auto pt-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between gap-2">
-                                <span class="text-xs font-mono text-slate-400">
-                                    ${language}
-                                </span>
-                                <div class="flex items-center gap-2">
-                                    <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center overflow-hidden text-sm font-semibold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-all">
-                                        <i data-lucide="github" class="w-4 h-4 shrink-0"></i>
-                                        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-out">${copy.ctaCode}</span>
+                            <div class="mt-auto pt-4 border-t border-line flex items-center justify-between gap-2">
+                                <span class="font-mono text-xs text-ink-3">${language}</span>
+                                <div class="flex items-center gap-4 text-sm text-ink-2">
+                                    <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 transition-colors hover:text-ink">
+                                        <i data-lucide="github" class="w-4 h-4"></i>
+                                        <span>${copy.ctaCode}</span>
                                     </a>
-                                    ${isLive ? `<a href="${projectUrl}" target="_blank" rel="noopener noreferrer" class="group relative inline-flex items-center overflow-hidden text-sm font-semibold text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-all" title="${copy.ctaLive}">
-                                        <i data-lucide="external-link" class="w-4 h-4 shrink-0"></i>
-                                        <span class="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-[100px] group-hover:ml-1 transition-all duration-300 ease-out">${copy.ctaLive}</span>
+                                    ${isLive ? `<a href="${projectUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 transition-colors hover:text-ink">
+                                        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                        <span>${copy.ctaLive}</span>
                                     </a>` : ''}
                                 </div>
                             </div>
@@ -242,12 +210,12 @@
                 }
             })
             .catch(error => {
-                console.error('[dynamic-projects] ❌ ERROR:', error);
+                console.error('[dynamic-projects] error:', error);
                 container.innerHTML = `
-                    <div class="snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] flex flex-col justify-center items-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700 text-center">
-                        <i data-lucide="github" class="w-8 h-8 mb-3 text-slate-400"></i>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-2">${copy.errorMessage}</p>
-                        <a href="https://github.com/${githubUsername}?tab=repositories" target="_blank" class="text-xs text-blue-600 hover:underline">${copy.errorLink}</a>
+                    <div class="snap-center shrink-0 w-[260px] sm:w-[320px] md:w-[360px] flex flex-col justify-center items-center p-6 rounded-xl border border-dashed border-line text-center">
+                        <i data-lucide="github" class="w-6 h-6 mb-3 text-ink-3"></i>
+                        <p class="text-sm text-ink-2 mb-2">${copy.errorMessage}</p>
+                        <a href="https://github.com/${githubUsername}?tab=repositories" target="_blank" class="text-sm text-accent-ink hover:underline">${copy.errorLink}</a>
                     </div>
                 `;
                 refreshScrollUi();
