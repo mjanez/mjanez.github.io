@@ -61,9 +61,9 @@
       </div>
     </div>
 
-    <figure class="space-y-3 rise" style="--i: 2">
-      <img src="{{ $heroAvatar }}" alt="{{ T "hero_avatar_alt" }}" class="w-full max-w-[18rem] md:ml-auto aspect-square object-cover rounded-2xl border border-line">
-      <figcaption class="md:max-w-[18rem] md:ml-auto font-mono text-xs text-ink-3">
+    <figure class="mx-auto w-full max-w-[18rem] space-y-3 md:mr-0 md:ml-auto rise" style="--i: 2">
+      <img src="{{ $heroAvatar }}" alt="{{ T "hero_avatar_alt" }}" class="w-full aspect-square object-cover rounded-2xl border border-line">
+      <figcaption class="text-center md:text-left font-mono text-xs text-ink-3">
         {{ T $roleBadgeKey }}
         {{ with index .Site.Data.experience 0 }}
           · <a href="{{ .company_url }}" class="transition-colors hover:text-accent-ink" target="_blank" rel="noopener">@{{ .company }}</a>
