@@ -1,39 +1,40 @@
-<section id="stack" class="py-16">
-  <div class="max-w-6xl mx-auto px-4 space-y-10">
-    <div class="space-y-2 text-left">
-      <p class="text-xs uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400">{{ T "nav_stack" }}</p>
-      <div class="flex items-center gap-3">
-        <i data-lucide="layers" class="w-6 h-6 text-primary"></i>
-        <h2 class="text-3xl font-bold text-slate-900 dark:text-white">{{ T "stack_title" }}</h2>
-      </div>
-      <p class="text-slate-600 dark:text-slate-400 max-w-3xl">{{ T "stack_subtitle" }}</p>
+<section id="stack" class="py-20 md:py-24">
+  <div class="max-w-6xl mx-auto px-6 space-y-12">
+    <div class="space-y-3">
+      <h2 class="section-title">{{ T "stack_title" }}</h2>
+      <p class="text-ink-2 max-w-2xl">{{ T "stack_subtitle" }}</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {{ range .Site.Data.stack.categories }}
-      {{ $accent := or .accent "#06b6d4" }}
-      <div class="surface-glass rounded-2xl p-5 border border-slate-100 dark:border-dark-border h-full transition-all hover:-translate-y-1 hover:ring-2 hover:ring-primary/30" style="--accent: {{ $accent }};">
-        <div class="flex items-start justify-between mb-3">
-          <div class="flex items-center gap-2">
-            <i data-lucide="{{ .icon | default "sparkles" }}" class="w-4 h-4" style="color: {{ $accent }};"></i>
-            <h3 class="text-sm uppercase tracking-wide font-semibold" style="color: {{ $accent }};">{{ T .title_key }}</h3>
-          </div>
-          <span class="w-2.5 h-2.5 rounded-full shadow-glow mt-1" style="background-color: {{ $accent }};"></span>
-        </div>
-        <div class="h-1.5 rounded-full mb-3" style="background: linear-gradient(120deg, {{ $accent }} 0%, {{ $accent }}cc 100%);"></div>
-        {{ with .subtitle_key }}
-        <p class="text-xs text-slate-500 dark:text-slate-400 mb-3 leading-snug">{{ T . }}</p>
+    <div data-tabs class="grid lg:grid-cols-[18rem_1fr] gap-6">
+      <div role="tablist" aria-orientation="vertical" class="flex lg:flex-col gap-2 overflow-x-auto scrollbar-hide">
+        {{ range $i, $c := .Site.Data.stack.categories }}
+        <button type="button" role="tab" id="stack-tab-{{ $i }}" aria-controls="stack-panel-{{ $i }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} class="group shrink-0 flex items-center gap-3 rounded-xl border border-transparent px-4 py-3 text-left transition-colors hover:bg-raised aria-selected:border-line aria-selected:bg-surface">
+          <i data-lucide="{{ $c.icon | default "layers" }}" class="w-4 h-4 shrink-0 text-ink-3 transition-colors group-aria-selected:text-accent-ink"></i>
+          <span class="min-w-0 flex-1">
+            <span class="block text-sm font-medium text-ink">{{ T $c.title_key }}</span>
+            {{ with $c.subtitle_key }}<span class="hidden lg:block text-xs text-ink-3">{{ T . }}</span>{{ end }}
+          </span>
+          <span class="font-mono text-xs text-ink-3 tabular">{{ printf "%02d" (len $c.items) }}</span>
+        </button>
         {{ end }}
-        <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-300">
-          {{ range .items }}
-          <li class="group flex items-center gap-2 transition-colors hover:text-primary">
-            <span class="w-1.5 h-1.5 rounded-full transition-colors" style="background-color: {{ $accent }};"></span>
-            <span>{{ T . }}</span>
-          </li>
-          {{ end }}
-        </ul>
       </div>
-      {{ end }}
+
+      <div>
+        {{ range $i, $c := .Site.Data.stack.categories }}
+        <div role="tabpanel" id="stack-panel-{{ $i }}" aria-labelledby="stack-tab-{{ $i }}" tabindex="0"{{ if ne $i 0 }} hidden{{ end }} class="rise rounded-xl border border-line bg-surface p-6 md:p-8">
+          <ul class="divide-y divide-line">
+            {{ range $c.items }}
+            <li class="py-4 first:pt-0 last:pb-0 flex flex-wrap items-center gap-2">
+              {{ range split (T .) " / " }}
+              <span class="inline-flex items-center rounded-lg border border-line bg-canvas px-3 py-1.5 font-mono text-sm text-ink">{{ . }}</span>
+              {{ end }}
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
     </div>
+    <noscript><style>[role="tabpanel"][hidden]{display:block}</style></noscript>
   </div>
 </section>

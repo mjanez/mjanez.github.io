@@ -7,12 +7,9 @@
     let theme = stored || (prefersDark ? 'dark' : 'light');
 
     const refreshThemeImages = () => {
-      const imgs = document.querySelectorAll('[data-theme-img]');
-      imgs.forEach((img) => {
+      document.querySelectorAll('[data-theme-img]').forEach((img) => {
         const target = theme === 'dark' ? img.dataset.srcDark : img.dataset.srcLight;
-        if (!target) return;
-        const withBust = `${target}${target.includes('?') ? '&' : '?'}theme=${theme}`;
-        if (img.src !== withBust) img.src = withBust;
+        if (target && img.getAttribute('src') !== target) img.src = target;
       });
     };
 
@@ -39,70 +36,130 @@
       applyTheme();
     });
 
-    // Background animation (Abstract linked data graphs)
-    const canvas = document.getElementById('ld-bg');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      let width, height;
-      const nodes = Array.from({ length: 48 }, () => ({
+    const graphCanvas = document.getElementById('graph-bg');
+    if (graphCanvas) {
+      const ctx = graphCanvas.getContext('2d');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const cssRgb = (name) => getComputedStyle(root).getPropertyValue(name).trim().replace(/\s+/g, ',');
+      let ink, accent;
+      const readColors = () => { ink = cssRgb('--ink'); accent = cssRgb('--accent'); };
+      readColors();
+      new MutationObserver(readColors).observe(root, { attributes: true, attributeFilter: ['class'] });
+
+      const LINK = 200;
+      const REACH = 200;
+      const pointer = { x: -1e4, y: -1e4 };
+      const nodes = Array.from({ length: 64 }, (_, i) => ({
         x: Math.random(),
         y: Math.random(),
-        vx: (Math.random() - 0.5) * 0.0008,
-        vy: (Math.random() - 0.5) * 0.0008,
-        r: 2 + Math.random() * 2,
-        pulse: Math.random() * Math.PI * 2,
+        vx: (Math.random() - 0.5) * 0.0004,
+        vy: (Math.random() - 0.5) * 0.0004,
+        r: i % 8 === 0 ? 3.5 : 2.5,
+        key: i % 8 === 0,
       }));
+      let w = 0;
+      let h = 0;
 
       const resize = () => {
-        width = canvas.width = window.innerWidth * devicePixelRatio;
-        height = canvas.height = window.innerHeight * devicePixelRatio;
-        canvas.style.width = window.innerWidth + 'px';
-        canvas.style.height = window.innerHeight + 'px';
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = window.innerWidth;
+        h = window.innerHeight;
+        graphCanvas.width = w * dpr;
+        graphCanvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (reduceMotion) draw();
       };
-      resize();
-      window.addEventListener('resize', resize);
 
       const draw = () => {
-        ctx.clearRect(0, 0, width, height);
-        const maxDist = Math.min(width, height) * 0.12;
-        for (let i = 0; i < nodes.length; i++) {
-          const n = nodes[i];
-          n.x += n.vx;
-          n.y += n.vy;
+        ctx.clearRect(0, 0, w, h);
+        for (const n of nodes) {
+          if (!reduceMotion) {
+            n.x += n.vx;
+            n.y += n.vy;
+            const dx = n.x * w - pointer.x;
+            const dy = n.y * h - pointer.y;
+            const d = Math.hypot(dx, dy);
+            if (d < REACH && d > 0) {
+              const push = (1 - d / REACH) * 0.6;
+              n.x += (dx / d) * push / w;
+              n.y += (dy / d) * push / h;
+            }
+          }
           if (n.x < 0 || n.x > 1) n.vx *= -1;
           if (n.y < 0 || n.y > 1) n.vy *= -1;
+          n.x = Math.min(1, Math.max(0, n.x));
+          n.y = Math.min(1, Math.max(0, n.y));
         }
-        ctx.save();
-        ctx.scale(devicePixelRatio, devicePixelRatio);
+
+        ctx.lineWidth = 1;
         for (let i = 0; i < nodes.length; i++) {
+          const a = nodes[i];
+          const ax = a.x * w;
+          const ay = a.y * h;
           for (let j = i + 1; j < nodes.length; j++) {
-            const dx = (nodes[i].x - nodes[j].x) * window.innerWidth;
-            const dy = (nodes[i].y - nodes[j].y) * window.innerHeight;
-            const d = Math.hypot(dx, dy);
-            if (d < maxDist) {
-              const alpha = 1 - d / maxDist;
-              ctx.strokeStyle = `rgba(6, 182, 212, ${alpha * 0.5})`;
-              ctx.lineWidth = 1;
+            const b = nodes[j];
+            const d = Math.hypot(ax - b.x * w, ay - b.y * h);
+            if (d < LINK) {
+              ctx.strokeStyle = `rgba(${ink},${(1 - d / LINK) * 0.16})`;
               ctx.beginPath();
-              ctx.moveTo(nodes[i].x * window.innerWidth, nodes[i].y * window.innerHeight);
-              ctx.lineTo(nodes[j].x * window.innerWidth, nodes[j].y * window.innerHeight);
+              ctx.moveTo(ax, ay);
+              ctx.lineTo(b.x * w, b.y * h);
               ctx.stroke();
             }
           }
+          const pd = Math.hypot(ax - pointer.x, ay - pointer.y);
+          if (pd < REACH) {
+            ctx.strokeStyle = `rgba(${accent},${(1 - pd / REACH) * 0.5})`;
+            ctx.beginPath();
+            ctx.moveTo(ax, ay);
+            ctx.lineTo(pointer.x, pointer.y);
+            ctx.stroke();
+          }
         }
-        nodes.forEach((n) => {
-          n.pulse += 0.03;
-          const glow = 0.6 + 0.4 * Math.sin(n.pulse);
-          ctx.fillStyle = `rgba(6, 182, 212, ${glow})`;
+        for (const n of nodes) {
+          ctx.fillStyle = n.key ? `rgb(${accent})` : `rgba(${ink},0.3)`;
           ctx.beginPath();
-          ctx.arc(n.x * window.innerWidth, n.y * window.innerHeight, n.r, 0, Math.PI * 2);
+          ctx.arc(n.x * w, n.y * h, n.r, 0, Math.PI * 2);
           ctx.fill();
-        });
-        ctx.restore();
-        requestAnimationFrame(draw);
+        }
       };
-      requestAnimationFrame(draw);
+
+      const tick = () => {
+        draw();
+        requestAnimationFrame(tick);
+      };
+
+      resize();
+      window.addEventListener('resize', resize);
+      if (!reduceMotion) {
+        window.addEventListener('pointermove', (e) => { pointer.x = e.clientX; pointer.y = e.clientY; });
+        document.addEventListener('pointerleave', () => { pointer.x = pointer.y = -1e4; });
+        requestAnimationFrame(tick);
+      }
     }
+
+    document.querySelectorAll('[data-tabs]').forEach((group) => {
+      const tabs = Array.from(group.querySelectorAll('[role="tab"]'));
+      const select = (tab, focus) => {
+        tabs.forEach((t) => {
+          const on = t === tab;
+          t.setAttribute('aria-selected', String(on));
+          t.tabIndex = on ? 0 : -1;
+          document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        });
+        if (focus) tab.focus();
+      };
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => select(tab));
+        tab.addEventListener('keydown', (e) => {
+          const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+          if (!step) return;
+          e.preventDefault();
+          select(tabs[(i + step + tabs.length) % tabs.length], true);
+        });
+      });
+    });
+
     let activeHash = window.location.hash || '';
 
     const syncLangSwitchLinks = () => {
@@ -130,12 +187,40 @@
       }
     });
 
+    const navLinks = Array.from(document.querySelectorAll('[data-nav-link]'));
+    const progressLine = document.querySelector('[data-page-progress]');
+
+    const setCurrentSection = (id) => {
+      navLinks.forEach((link) => {
+        if (link.dataset.navLink === id) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    };
+
+    let progressQueued = false;
+    const updateProgress = () => {
+      progressQueued = false;
+      if (!progressLine) return;
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progressLine.style.transform = `scaleX(${max > 0 ? Math.min(1, window.scrollY / max) : 0})`;
+    };
+    window.addEventListener('scroll', () => {
+      if (progressQueued) return;
+      progressQueued = true;
+      requestAnimationFrame(updateProgress);
+    }, { passive: true });
+    window.addEventListener('resize', () => {
+      updateProgress();
+    });
+    updateProgress();
+
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             activeHash = `#${entry.target.id}`;
             syncLangSwitchLinks();
+            setCurrentSection(entry.target.dataset.nav || entry.target.id);
           }
         });
       }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
@@ -177,49 +262,6 @@
       link.addEventListener('click', () => setMobileMenuState(false));
     });
 
-    const fitSingleLineText = () => {
-      const elements = document.querySelectorAll('[data-fit-text="single-line"]');
-      elements.forEach((el) => {
-        const min = Number(el.dataset.fitMin) || 12;
-        const max = Number(el.dataset.fitMax) || 24;
-        const container = el.parentElement;
-        if (!container) return;
-
-        const applyFit = () => {
-          el.style.fontSize = `${max}px`;
-          const available = container.clientWidth;
-          if (!available) return;
-          let current = max;
-          while (el.scrollWidth > available && current > min) {
-            current -= 1;
-            el.style.fontSize = `${current}px`;
-          }
-        };
-
-        applyFit();
-
-        if ('ResizeObserver' in window) {
-          const ro = new ResizeObserver(applyFit);
-          ro.observe(container);
-          ro.observe(el);
-        } else {
-          window.addEventListener('resize', applyFit);
-        }
-      });
-    };
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => {
-        fitSingleLineText();
-      });
-    } else {
-      window.addEventListener('load', fitSingleLineText);
-    }
-
-    if (document.readyState === 'complete') {
-      fitSingleLineText();
-    }
-
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const countupEls = Array.from(document.querySelectorAll('[data-countup]'));
 
@@ -254,7 +296,7 @@
         return;
       }
 
-      const duration = 3000;
+      const duration = 900;
       const startTime = performance.now();
       const easeOut = (t) => 1 - Math.pow(1 - t, 3);
 
