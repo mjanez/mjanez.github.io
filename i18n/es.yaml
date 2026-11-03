@@ -1,5 +1,3 @@
-- id: nav_brand
-  translation: "mjanez.dev"
 - id: nav_experience
   translation: "Experiencia"
 - id: nav_projects
@@ -12,11 +10,11 @@
   translation: "Abrir navegación"
 - id: nav_menu_close
   translation: "Cerrar navegación"
+- id: skip_to_content
+  translation: "Saltar al contenido"
 - id: theme_toggle_label
   translation: "Cambiar tema"
 
-- id: hero_badge
-  translation: "Disponible para colaborar"
 - id: hero_name
   translation: "Manuel Jáñez"
 - id: hero_avatar_alt
@@ -50,12 +48,8 @@
   translation: "10"
 - id: hero_stat_years_suffix
   translation: "años"
-- id: hero_stat_data_value
-  translation: "DATA"
 - id: hero_stat_data_label
   translation: "Gobierno e interoperabilidad"
-- id: hero_stat_gis_value
-  translation: "GIS"
 - id: hero_stat_gis_label
   translation: "Soluciones geo (OGC/INSPIRE)"
 
@@ -134,7 +128,7 @@
   translation: "Abrir repositorio"
 
 - id: more_projects
-  translation: "Proyectos paralelos y experimentos:"
+  translation: "Proyectos paralelos y experimentos"
 - id: more_projects_desc
   translation: "Listado automático desde GitHub, priorizando repos activos."
 - id: dynamic_projects_loading
@@ -283,7 +277,7 @@
   translation: "Terraform / Ansible"
 
 - id: contact_title
-  translation: "Impulsando plataformas de datos"
+  translation: "¿Trabajas en una plataforma de datos?"
 - id: contact_body
   translation: "Centrado en el análisis, desarrollo e implementación de especificaciones de datos (DCAT-AP-ES), infraestructuras para la publicación (Open Data/ERPD), desarrollos sobre espacios de datos y web semántica. Mi enfoque prioriza el intercambio de información al máximo nivel de interoperabilidad técnica y normativa."
 - id: contact_primary_cta
@@ -291,30 +285,24 @@
 - id: contact_secondary_cta
   translation: "Abrir GitHub"
 
-- id: github_stats_live
-  translation: "Señal GitHub en vivo"
 - id: github_stats_title
   translation: "Estadísticas de codificación"
 - id: github_stats_subtitle
   translation: "Instantánea en tiempo real desde GitHub."
 - id: github_stats_view_profile
   translation: "Abrir perfil de GitHub"
-- id: github_stats_followers
-  translation: "Seguidores"
-- id: github_stats_repos
-  translation: "Repos públicos"
-- id: github_stats_stars
-  translation: "Estrellas"
-- id: github_stats_latest
-  translation: "Último push"
-- id: github_stats_updated
-  translation: "Actualizado"
-- id: github_stats_error
-  translation: "Stats no disponibles"
 - id: github_stats_overview_alt
   translation: "Tarjeta de resumen de GitHub"
-- id: github_stats_langs_alt
-  translation: "Tarjeta de lenguajes principales"
+- id: github_stats_languages
+  translation: "Lenguajes más usados"
+- id: github_stats_forks
+  translation: "Proyectos con fork"
+- id: github_stats_prs
+  translation: "PRs fusionadas en otros repos"
+- id: github_stats_more
+  translation: "más"
+- id: github_stats_error
+  translation: "Stats no disponibles"
 
 - id: footer_rights_prefix
   translation: "Construido con"

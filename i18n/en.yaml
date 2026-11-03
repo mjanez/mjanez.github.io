@@ -1,5 +1,3 @@
-- id: nav_brand
-  translation: "mjanez.dev"
 - id: nav_experience
   translation: "Experience"
 - id: nav_projects
@@ -12,11 +10,11 @@
   translation: "Open navigation"
 - id: nav_menu_close
   translation: "Close navigation"
+- id: skip_to_content
+  translation: "Skip to content"
 - id: theme_toggle_label
   translation: "Toggle theme"
 
-- id: hero_badge
-  translation: "Open for collaboration"
 - id: hero_name
   translation: "Manuel Jáñez"
 - id: hero_avatar_alt
@@ -50,12 +48,8 @@
   translation: "10"
 - id: hero_stat_years_suffix
   translation: "yrs"
-- id: hero_stat_data_value
-  translation: "DATA"
 - id: hero_stat_data_label
   translation: "Governance & Interoperability"
-- id: hero_stat_gis_value
-  translation: "GIS"
 - id: hero_stat_gis_label
   translation: "Spatial solutions (OGC/INSPIRE)"
 
@@ -283,7 +277,7 @@
   translation: "Terraform / Ansible"
 
 - id: contact_title
-  translation: "Boosting data platforms"
+  translation: "Working on a data platform?"
 - id: contact_body
   translation: "Focused on the analysis, development, and implementation of application profiles (DCAT-AP-ES), data publishing platforms (Open Data/ERPD), Data Spaces, and Semantic Web. My approach prioritizes information exchange ensuring the highest level of technical and regulatory interoperability."
 - id: contact_primary_cta
@@ -291,30 +285,24 @@
 - id: contact_secondary_cta
   translation: "Open GitHub"
 
-- id: github_stats_live
-  translation: "Live GitHub signal"
 - id: github_stats_title
   translation: "Coding stats"
 - id: github_stats_subtitle
   translation: "Realtime snapshot directly from GitHub."
 - id: github_stats_view_profile
   translation: "Open GitHub profile"
-- id: github_stats_followers
-  translation: "Followers"
-- id: github_stats_repos
-  translation: "Public repos"
-- id: github_stats_stars
-  translation: "Stars"
-- id: github_stats_latest
-  translation: "Latest push"
-- id: github_stats_updated
-  translation: "Updated"
-- id: github_stats_error
-  translation: "Stats unavailable"
 - id: github_stats_overview_alt
   translation: "GitHub overview card"
-- id: github_stats_langs_alt
-  translation: "Top languages card"
+- id: github_stats_languages
+  translation: "Most used languages"
+- id: github_stats_forks
+  translation: "Forked projects"
+- id: github_stats_prs
+  translation: "PRs merged in other repos"
+- id: github_stats_more
+  translation: "more"
+- id: github_stats_error
+  translation: "Stats unavailable"
 
 - id: footer_rights_prefix
   translation: "Built with"
